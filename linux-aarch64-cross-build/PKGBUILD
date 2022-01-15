@@ -132,7 +132,7 @@ _package(){
   "
 
   # install mkinitcpio preset file
-  sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/linux.preset"
 
   # install pacman hooks
   sed "${_subst}" ../60-linux.hook | install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
