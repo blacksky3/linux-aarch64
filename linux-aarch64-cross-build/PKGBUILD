@@ -88,9 +88,9 @@ _package(){
   pkgdesc="The Linux Kernel and modules - AArch64 multi-platform"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("linux=${pkgver}" "WIREGUARD-MODULE")
+  provides=("linux=${pkgver}" "linux" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
-  conflicts=('linux')
+  conflicts=('linux' 'linux-aarch64' 'linux-aarch64-rc')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgbase}.install
 
