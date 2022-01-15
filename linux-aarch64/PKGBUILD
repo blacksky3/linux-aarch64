@@ -1,6 +1,6 @@
 KARCH=arm64
 
-pkgbase=linux-aarch64-edge
+pkgbase=linux-aarch64
 pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
