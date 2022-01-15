@@ -10,7 +10,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16
+pkgver=5.15.13
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.kernel.org/"
@@ -20,15 +20,15 @@ makedepends=('make' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-t
              'aarch64-linux-gnu-linux-api-headers')
 options=('!strip')
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
-        #"0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
-        #"0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch"
+        "0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
+        "0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch"
         "config"
         "linux.preset"
         "60-linux.hook"
         "90-linux.hook")
 md5sums=("SKIP"
-         #"407903b1f0a681be680e147333c56724"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-         #"51833771ffc87a74c5b5615a7ee8ad68"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+         "407903b1f0a681be680e147333c56724"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+         "51833771ffc87a74c5b5615a7ee8ad68"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
          "SKIP"
          "41cb5fef62715ead2dd109dbea8413d6"  #linux.preset
          "0a5f16bfec6ad982a2f6782724cca8ba"  #60-linux.hook
