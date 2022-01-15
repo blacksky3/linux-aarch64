@@ -91,7 +91,7 @@ _package(){
   provides=("linux=${pkgver}" "linux" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
   conflicts=('linux' 'linux-aarch64' 'linux-aarch64-rc')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/linux-aarch64.preset" "etc/mkinitcpio.d/linux-aarch64-rc.preset")
   install=${pkgbase}.install
 
   cd "${srcdir}"/linux-$pkgver
