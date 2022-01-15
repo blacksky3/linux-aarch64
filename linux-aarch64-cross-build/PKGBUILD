@@ -1,5 +1,3 @@
-major=5.16
-_arch=aarch64
 KARCH=arm64
 
 pkgbase=linux-aarch64
