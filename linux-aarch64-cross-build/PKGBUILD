@@ -81,7 +81,7 @@ build(){
   make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) Image Image.gz modules
 
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
-  make ${MAKEFLAGS} ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) DTC_FLAGS="-@" dtbs
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) DTC_FLAGS="-@" dtbs
 }
 
 _package(){
@@ -106,10 +106,10 @@ _package(){
 
   msg2 "Installing boot image and dtbs..."
   install -Dm644 arch/arm64/boot/Image{,.gz} -t "${pkgdir}/boot"
-  make ARCH=${KARCH} ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
 
   msg2 "Installing modules..."
-  make ARCH=${KARCH} ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 modules_install
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # make room for external modules
   #local _extramodules="extramodules-${kernver}"
