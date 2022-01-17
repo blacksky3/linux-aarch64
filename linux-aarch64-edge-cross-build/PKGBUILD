@@ -57,9 +57,6 @@ prepare(){
   # add pkgrel to extraversion
   #sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  #sed -i '2iexit 0' scripts/depmod.sh
-
   scripts/config --disable CONFIG_LOCALVERSION
 
   msg2 "Setting localversion..."
