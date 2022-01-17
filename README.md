@@ -9,7 +9,7 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
     export CARCH="aarch64"
     makepkg -s
     
-# Build on Archlinux aarch64 system
+# Build on Archlinux ARM aarch64 system
 
     cd linux-aarch64-edge
     makepkg -s
