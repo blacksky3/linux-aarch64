@@ -13,7 +13,7 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
     export CARCH="aarch64"
     makepkg -s
     
-## Installing compiled packahes on your Archlinux ARM aarch64 system  
+## Installing compiled packages on your Archlinux ARM aarch64 system  
 
 Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst on your Archlinux ARM aarch64 system and run :
 
