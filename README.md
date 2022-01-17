@@ -26,3 +26,7 @@ Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-heade
     makepkg -s
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst 
+
+# Contact info
+
+kevall474@tuta.io if you have any problems or bugs report.
