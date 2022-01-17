@@ -6,5 +6,5 @@
     
 # Build on Archlinux aarch64 system
 
-    cd linux-aarch64
+    cd linux-aarch64-edge
     makepkg -s
