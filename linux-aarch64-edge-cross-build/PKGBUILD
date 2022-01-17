@@ -98,11 +98,6 @@ _package(){
   local kernver="$(<version)"
   local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
 
-  #mkdir -p "${pkgdir}"/{boot,usr/lib/modules,boot/dtbs}
-  #make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  #make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
-  #cp arch/${KARCH}/boot/Image{,.gz} "${pkgdir}/boot"
-
   msg2 "Installing boot image and dtbs..."
   install -Dm644 arch/arm64/boot/Image{,.gz} -t "${pkgdir}/boot"
   make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
@@ -110,19 +105,9 @@ _package(){
   msg2 "Installing modules..."
   make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 modules_install
 
-  # make room for external modules
-  #local _extramodules="extramodules-${kernver}"
-  #ln -s "../${_extramodules}" "${pkgdir}/usr/lib/modules/${kernver}/extramodules"
-
-  # add real version for building modules and running depmod from hook
-  #cho "${kernver}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
-
   # remove build and source links
   msg2 "Remove build dir and source dir..."
   rm -rf "$modulesdir"/{source,build}
-
-  # now we call depmod...
-  #depmod -b "${pkgdir}/usr" -F System.map "${kernver}"
 
   # sed expression for following substitutions
   local _subst="
