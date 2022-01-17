@@ -15,11 +15,14 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
     
 ## Installing compiled packahes on your Archlinux ARM aarch64 system  
 
-copy ==linux-aarch64-edge-x.x.x-1-aarch64.pkg.tar.zst== and linux-aarch64-edge-headers-x.x.x-1-aarch64.pkg.tar.zst 
+Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst your Archlinux ARM aarch64 system and run :
+
+    sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
+    sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst     
     
 # Build on Archlinux ARM aarch64 system
 
     cd linux-aarch64-edge
     makepkg -s
-    sudo pacman -U linux-aarch64-edge-x.x.x-1-aarch64.pkg.tar.zst  
-    sudo pacman -U linux-aarch64-edge-headers-x.x.x-1-aarch64.pkg.tar.zst 
+    sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
+    sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst 
