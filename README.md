@@ -1,6 +1,7 @@
 ![image](https://user-images.githubusercontent.com/68618182/149712738-3294351d-208f-4103-bc54-4fb0556e1524.png)
 
-#Archlinux Arm
+# Archlinux ARM kernel build
+Build for the latest linux kernel for Archlinux ARM system (aarch64)
 
 # Build on Archlinux x86_64 system
 
