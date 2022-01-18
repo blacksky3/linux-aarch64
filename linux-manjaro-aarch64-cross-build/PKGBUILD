@@ -57,9 +57,9 @@ source+=(# ALARM patches
          "${manjaropatchsource}/0019-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch"             #RockPro64
          "${manjaropatchsource}/0020-drm-rockchip-support-gamma-control-on-RK3399.patch"                     #RK3399
          "${manjaropatchsource}/0021-media-rockchip-rga-do-proper-error-checking-in-probe.patch"             #Rockchip
-         "${manjaropatchsource}/0022-arm-dts-rockchip-firefly-station-m2.patch"                              #Firefly Station M2
-         "${manjaropatchsource}/0023-add-dts-rk3568-station-p2.patch"                                        #Firefly Station P2
-         "${manjaropatchsource}/0024-add-dts-rk3568-radxa-rock3a.patch"                                      #Radxa Rock3A
+         #"${manjaropatchsource}/0022-arm-dts-rockchip-firefly-station-m2.patch"                              #Firefly Station M2
+         #"${manjaropatchsource}/0023-add-dts-rk3568-station-p2.patch"                                        #Firefly Station P2
+         #"${manjaropatchsource}/0024-add-dts-rk3568-radxa-rock3a.patch"                                      #Radxa Rock3A
          # Pinebook, PinePhone and PineTab patches
          "${manjaropatchsource}/0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch"            #Bluetooth
          "${manjaropatchsource}/0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch"                    #Bluetooth
@@ -92,9 +92,9 @@ md5sums+=(# ALARM patches
           "6bb2d84857359016b5e0878cf2fc50cc"  #0019-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch
           "e2f08e3bc6d1b36e7000233abab1bfc7"  #0020-drm-rockchip-support-gamma-control-on-RK3399.patch
           "724a7a5b32f892cef9b310ab33fdae68"  #0021-media-rockchip-rga-do-proper-error-checking-in-probe.patch
-          "7b23ad49405f14618cfd92f59c25b911"  #0022-arm-dts-rockchip-firefly-station-m2.patch
-          "0ef7f4e1e2e87797be664541ad33e464"  #0023-add-dts-rk3568-station-p2.patch
-          "516a0c0f0dc663419ed275b94edbab55"  #0024-add-dts-rk3568-radxa-rock3a.patch
+          #"7b23ad49405f14618cfd92f59c25b911"  #0022-arm-dts-rockchip-firefly-station-m2.patch
+          #"0ef7f4e1e2e87797be664541ad33e464"  #0023-add-dts-rk3568-station-p2.patch
+          #"516a0c0f0dc663419ed275b94edbab55"  #0024-add-dts-rk3568-radxa-rock3a.patch
           # Pinebook, PinePhone and PineTab patches
           "cf64831f27bb47da29e708b7243bb340"  #0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch
           "a100d32aa6c345290061d2a773bf1232"  #0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch
