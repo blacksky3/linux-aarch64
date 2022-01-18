@@ -1,0 +1,272 @@
+KARCH=arm64
+
+pkgbase=linux-manjaro-aarch64
+pkgname=("$pkgbase" "$pkgbase-headers")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
+pkgver=5.16.1
+pkgrel=1
+arch=('aarch64')
+url="https://www.kernel.org/"
+license=(GPL-2.0)
+makedepends=('make' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'dtc'
+             'aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gcc' 'aarch64-linux-gnu-gdb' 'aarch64-linux-gnu-glibc'
+             'aarch64-linux-gnu-linux-api-headers')
+options=('!strip')
+source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
+        "0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
+        "0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch"
+        "config"
+        "linux.preset"
+        "60-linux.hook"
+        "90-linux.hook")
+md5sums=("SKIP"
+         "91d1298599aa31b10f1f3954a450b6c3"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+         "3b781286c0b97cec552ad6c8a7a019dd"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+         "36d2e7302cdc22598b29f7c9f25855cc"  #config
+         "41cb5fef62715ead2dd109dbea8413d6"  #linux.preset
+         "0a5f16bfec6ad982a2f6782724cca8ba"  #60-linux.hook
+         "3dc88030a8f2f5a5f97266d99b149f77") #90-linux.hook
+
+# Manjaro patches
+manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/master
+source+=(# ALARM patches
+         # Manjaro ARM Patches
+         "${manjaropatchsource}/0001-arm64-dts-rockchip-Add-back-cdn_dp-to-Pinebook-Pro.patch"               #DP Alt Mode - Pinebook Pro
+         "${manjaropatchsource}/0002-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch"               #Pine64
+         "${manjaropatchsource}/0003-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch"                   #Nanopi Neo Plus 2
+         "${manjaropatchsource}/0004-drm-bridge-analogix_dp-Add-enable_psr-param.patch"                      #Pinebook Pro
+         "${manjaropatchsource}/0005-gpu-drm-add-new-display-resolution-2560x1440.patch"                     #Odroid
+         "${manjaropatchsource}/0006-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch"             #Panfrost
+         "${manjaropatchsource}/0007-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch"                #Firelfy Station P1
+         "${manjaropatchsource}/0008-typec-displayport-some-devices-have-pin-assignments-reversed.patch"     #DP Alt Mode
+         "${manjaropatchsource}/0009-Add-megis-extcon-changes-to-fusb302.patch"                              #DP Alt Mode
+         "${manjaropatchsource}/0010-usb-typec-Add-megis-typex-to-extcon-bridge-driver.patch"                #DP Alt Mode
+         "${manjaropatchsource}/0011-arm64-rockchip-add-DP-ALT-rockpro64.patch"                              #DP Alt mode - RockPro64
+         "${manjaropatchsource}/0012-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch"             #DP Alt mode
+         "${manjaropatchsource}/0013-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch"        #RockPro64
+         "${manjaropatchsource}/0014-arm64-dts-rockchip-add-typec-extcon-hack.patch"                         #DP Alt mode
+         "${manjaropatchsource}/0015-drm-meson-add-YUV422-output-support.patch"                              #G12B
+         "${manjaropatchsource}/0016-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"             #Beelink
+         "${manjaropatchsource}/0017-add-ugoos-device.patch"                                                 #Ugoos
+         "${manjaropatchsource}/0018-drm-panfrost-scheduler-fix.patch"                                       #Panfrost
+         "${manjaropatchsource}/0019-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch"             #RockPro64
+         "${manjaropatchsource}/0020-drm-rockchip-support-gamma-control-on-RK3399.patch"                     #RK3399
+         "${manjaropatchsource}/0021-media-rockchip-rga-do-proper-error-checking-in-probe.patch"             #Rockchip
+         "${manjaropatchsource}/0022-arm-dts-rockchip-firefly-station-m2.patch"                              #Firefly Station M2
+         "${manjaropatchsource}/0023-add-dts-rk3568-station-p2.patch"                                        #Firefly Station P2
+         "${manjaropatchsource}/0024-add-dts-rk3568-radxa-rock3a.patch"                                      #Radxa Rock3A
+         # Pinebook, PinePhone and PineTab patches
+         "${manjaropatchsource}/0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch"            #Bluetooth
+         "${manjaropatchsource}/0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch"                    #Bluetooth
+         "${manjaropatchsource}/0003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch"                 #Bluetooth
+         "${manjaropatchsource}/0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch"             #Bluetooth
+         "${manjaropatchsource}/0005-staging-add-rtl8723cs-driver.patch"                                     #Wifi
+         "${manjaropatchsource}/0006-pinetab-accelerometer.patch"                                            #accelerometer
+         "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch")                                   #Audio
+
+md5sums+=(# ALARM patches
+          # Manjaro ARM Patches
+          "e5436efcd8ccecce82569dc16d2aadda"  #0001-arm64-dts-rockchip-Add-back-cdn_dp-to-Pinebook-Pro.patch
+          "0d47dea87f03bf36262171e01889f832"  #0002-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch
+          "e6fe272dc95a1c0a8f871924699fea16"  #0003-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch
+          "9f27b2a05eaeb1995fc0fcf6a8b923c4"  #0004-drm-bridge-analogix_dp-Add-enable_psr-param.patch
+          "6f592c11f6adc1de0f06e5d18f8c2862"  #0005-gpu-drm-add-new-display-resolution-2560x1440.patch
+          "f8f0b124c741be61d86bea8d44e875f9"  #0006-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch
+          "564136ab1c75b6dc67be02b54e695ae5"  #0007-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch
+          "a033be22c23afb1d5daeeeb21353185d"  #0008-typec-displayport-some-devices-have-pin-assignments-reversed.patch
+          "069797069722b8eb55eae145d13c2c6a"  #0009-Add-megis-extcon-changes-to-fusb302.patch
+          "8b73e8b7df4eeb214a93f12a0c9497c6"  #0010-usb-typec-Add-megis-typex-to-extcon-bridge-driver.patch
+          "03d78b64dd24b607b94577dca08f7cfe"  #0011-arm64-rockchip-add-DP-ALT-rockpro64.patch
+          "66fae3fc96f0a478a56ff11632f3ef70"  #0012-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch
+          "245858f26512dfc48adbf509b6fc8364"  #0013-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch
+          "4b3dc1563f1e25b34bac22c2197f2c93"  #0014-arm64-dts-rockchip-add-typec-extcon-hack.patch
+          "469417b64e6a2bf65bd74c6d9cad2040"  #0015-drm-meson-add-YUV422-output-support.patch
+          "8f4816a1ed98f80eebad49b6446427a9"  #0016-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch
+          "1b92d7617e60d3c525a4b18ab4351185"  #0017-add-ugoos-device.patch
+          "c09e4e1c2dfc76a5b7e3b4c79aa7798d"  #0018-drm-panfrost-scheduler-fix.patch
+          "6bb2d84857359016b5e0878cf2fc50cc"  #0019-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch
+          "e2f08e3bc6d1b36e7000233abab1bfc7"  #0020-drm-rockchip-support-gamma-control-on-RK3399.patch
+          "724a7a5b32f892cef9b310ab33fdae68"  #0021-media-rockchip-rga-do-proper-error-checking-in-probe.patch
+          "7b23ad49405f14618cfd92f59c25b911"  #0022-arm-dts-rockchip-firefly-station-m2.patch
+          "0ef7f4e1e2e87797be664541ad33e464"  #0023-add-dts-rk3568-station-p2.patch
+          "516a0c0f0dc663419ed275b94edbab55"  #0024-add-dts-rk3568-radxa-rock3a.patch
+          # Pinebook, PinePhone and PineTab patches
+          "cf64831f27bb47da29e708b7243bb340"  #0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch
+          "a100d32aa6c345290061d2a773bf1232"  #0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch
+          "9510821113c122f91f47b9d0f7ca7264"  #0003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch
+          "a74fcfa1e085a3a99dcf4f214c1ca65a"  #0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch
+          "959c2cb33566b27f880c178039d6c12f"  #0005-staging-add-rtl8723cs-driver.patch
+          "d0fd6bd627223d4c9fc001ffff9df401"  #0006-pinetab-accelerometer.patch
+          "f79300740a7350d2d24ab5e120831b52") #0007-enable-jack-detection-pinetab.patch
+
+prepare(){
+
+  cd "${srcdir}"/linux-$pkgver
+
+  # add upstream patch
+  #git apply --whitespace=nowarn ../patch-${pkgver}
+
+  # Apply any patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+
+  # Copy the config file first
+  # Copy "${srcdir}"/config to "${srcdir}"/linux-${pkgver}/.config
+  msg2 "Copy "${srcdir}"/config to "${srcdir}"/linux-$pkgver/.config"
+  cp "${srcdir}"/config .config
+
+  # add pkgrel to extraversion
+  #sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
+
+  scripts/config --disable CONFIG_LOCALVERSION
+
+  msg2 "Setting localversion..."
+  scripts/setlocalversion --save-scmversion
+  echo "-${pkgbase}" > localversion
+
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) olddefconfig
+
+  make -s kernelrelease > version
+  msg2 "Prepared $pkgbase version $(<version)"
+}
+
+build(){
+
+  cd "${srcdir}"/linux-$pkgver
+
+  unset LDFLAGS
+
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) Image Image.gz modules
+
+  # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) DTC_FLAGS="-@" dtbs
+}
+
+_package(){
+  pkgdesc="The Linux Kernel and modules with Manjaro ARM patches - AArch64 multi-platform"
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  optdepends=('crda: to set the correct wireless channels of your country')
+  provides=("linux=${pkgver}" "WIREGUARD-MODULE")
+  replaces=('linux-armv8')
+  conflicts=('linux')
+  install=${pkgbase}.install
+
+  cd "${srcdir}"/linux-$pkgver
+
+  local kernver="$(<version)"
+  local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
+
+  msg2 "Installing boot image and dtbs..."
+  install -Dm644 arch/arm64/boot/Image{,.gz} -t "${pkgdir}/boot"
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
+
+  msg2 "Installing modules..."
+  make ARCH=${KARCH} CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 modules_install
+
+  # remove build and source links
+  msg2 "Remove build dir and source dir..."
+  rm -rf "$modulesdir"/{source,build}
+
+  # sed expression for following substitutions
+  local _subst="
+    s|%PKGBASE%|${pkgbase}|g
+    s|%KERNVER%|${kernver}|g
+  "
+
+  # install mkinitcpio preset file
+  sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hooks
+  sed "${_subst}" ../60-linux.hook | install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
+  sed "${_subst}" ../90-linux.hook | install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+}
+
+_package-headers() {
+  pkgdesc="Header files and scripts for building modules for linux kernel - AArch64 multi-platform"
+  provides=("linux-headers=${pkgver}")
+  conflicts=('linux-headers')
+
+  cd "${srcdir}"/linux-$pkgver
+
+  local builddir="${pkgdir}/usr/lib/modules/${kernver}/build"
+
+  echo "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map vmlinux localversion
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/${KARCH}" -m644 arch/${KARCH}/Makefile
+  cp -t "$builddir" -a scripts
+
+  # add xfs and shmem for aufs building
+  mkdir -p "$builddir"/{fs/xfs,mm}
+
+  echo "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/${KARCH}" -a arch/${KARCH}/include
+  install -Dt "$builddir/arch/${KARCH}/kernel" -m644 arch/${KARCH}/kernel/asm-offsets.s
+  mkdir -p "$builddir/arch/arm"
+  cp -t "$builddir/arch/arm" -a arch/arm/include
+
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # https://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # https://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+  echo "Installing KConfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */${KARCH}/ || $arch == */arm/ ]] && continue
+    echo "Removing $(basename "$arch")"
+    rm -r "$arch"
+  done
+
+  echo "Removing documentation..."
+  rm -r "$builddir/Documentation"
+
+  echo "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
+
+  echo "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+  echo "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -bi "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
+    esac
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+}
