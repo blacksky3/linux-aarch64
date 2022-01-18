@@ -194,6 +194,7 @@ _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - AArch64 multi-platform"
   provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers')
+  depends=("${pkgbase}")
 
   cd "${srcdir}"/linux-$pkgver
 
