@@ -15,7 +15,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.4
+pkgver=5.16.5
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
