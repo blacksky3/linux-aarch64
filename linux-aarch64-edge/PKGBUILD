@@ -15,7 +15,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.5
+pkgver=5.16.7
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -32,7 +32,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
 md5sums=("SKIP"
          "91d1298599aa31b10f1f3954a450b6c3"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
          "3b781286c0b97cec552ad6c8a7a019dd"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-         "963e6e90eb52091fa0f6ec2ea28dd3a3"  #config
+         "1c190026d70a44dabfc03a6134f84e23"  #config
          "41cb5fef62715ead2dd109dbea8413d6"  #linux.preset
          "0a5f16bfec6ad982a2f6782724cca8ba"  #60-linux.hook
          "3dc88030a8f2f5a5f97266d99b149f77") #90-linux.hook
