@@ -74,7 +74,8 @@ source+=(# ALARM patches
          "${manjaropatchsource}/0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch"          # Bluetooth 
          "${manjaropatchsource}/0005-staging-add-rtl8723cs-driver.patch"                                  # Wifi 
          "${manjaropatchsource}/0006-pinetab-accelerometer.patch"                                         # Accelerometer
-         "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch")                                # Audio
+         "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch"                                 # Audio
+         "${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch"           # Bluetooth
 md5sums+=(# ALARM patches
           # Manjaro ARM Patches
           "0d47dea87f03bf36262171e01889f832"  #0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch
@@ -108,7 +109,8 @@ md5sums+=(# ALARM patches
           "a74fcfa1e085a3a99dcf4f214c1ca65a"  #0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch
           "959c2cb33566b27f880c178039d6c12f"  #0005-staging-add-rtl8723cs-driver.patch
           "d0fd6bd627223d4c9fc001ffff9df401"  #0006-pinetab-accelerometer.patch
-          "f79300740a7350d2d24ab5e120831b52") #0007-enable-jack-detection-pinetab.patch
+          "f79300740a7350d2d24ab5e120831b52"  #0007-enable-jack-detection-pinetab.patch
+          "faecd80e9d0727d360aa7bbe28b53489") #0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch
 
 prepare(){
 
