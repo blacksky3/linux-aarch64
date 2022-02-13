@@ -32,7 +32,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
 md5sums=("SKIP"
          "91d1298599aa31b10f1f3954a450b6c3"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
          "3b781286c0b97cec552ad6c8a7a019dd"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-         "9d095827f8a73432ca4ed8ae50e292c5"  #config
+         "386c30a98c2ad8d147dbb01e28eef33b"  #config
          "41cb5fef62715ead2dd109dbea8413d6"  #linux.preset
          "0a5f16bfec6ad982a2f6782724cca8ba"  #60-linux.hook
          "3dc88030a8f2f5a5f97266d99b149f77") #90-linux.hook
@@ -72,7 +72,8 @@ source+=(# ALARM patches
          "${manjaropatchsource}/0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch"          # Bluetooth 
          "${manjaropatchsource}/0005-staging-add-rtl8723cs-driver.patch"                                  # Wifi 
          "${manjaropatchsource}/0006-pinetab-accelerometer.patch"                                         # Accelerometer
-         "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch")                                # Audio
+         "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch"                                 # Audio
+         "${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch")          # Bluetooth
 md5sums+=(# ALARM patches
           # Manjaro ARM Patches
           "0d47dea87f03bf36262171e01889f832"  #0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch
@@ -106,7 +107,8 @@ md5sums+=(# ALARM patches
           "a74fcfa1e085a3a99dcf4f214c1ca65a"  #0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch
           "959c2cb33566b27f880c178039d6c12f"  #0005-staging-add-rtl8723cs-driver.patch
           "d0fd6bd627223d4c9fc001ffff9df401"  #0006-pinetab-accelerometer.patch
-          "f79300740a7350d2d24ab5e120831b52") #0007-enable-jack-detection-pinetab.patch
+          "f79300740a7350d2d24ab5e120831b52"  #0007-enable-jack-detection-pinetab.patch
+          "faecd80e9d0727d360aa7bbe28b53489") #0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch
 
 prepare(){
 
