@@ -27,6 +27,17 @@ Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-heade
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst 
 
+
 # Contact info
 
-kevall474@tuta.io if you have any problems or bugs report.
+blacksky3@tuta.io if you have any problems or bugs report.
+
+# Donation
+
+BTC : bc1quz6zcjjy769cn9fd42r89hfh9unr4u2w4sfxer
+
+ETH : 0xF8cBcA16f4eeDfF4a07D173B7fF53906a87b0476
+
+DAI : 0xF8cBcA16f4eeDfF4a07D173B7fF53906a87b0476
+
+LINK : 0xF8cBcA16f4eeDfF4a07D173B7fF53906a87b0476
