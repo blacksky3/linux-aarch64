@@ -41,7 +41,7 @@ md5sums=("SKIP"
 
 # Manjaro patches
 manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/master
-source+=(# ALARM patches
+source+=( # ALARM patches
          # Manjaro ARM Patches
          "${manjaropatchsource}/0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch"            # Pine64
          "${manjaropatchsource}/0002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch"                # Nanopi Neo Plus 2
@@ -75,7 +75,7 @@ source+=(# ALARM patches
          "${manjaropatchsource}/0005-staging-add-rtl8723cs-driver.patch"                                  # Wifi 
          "${manjaropatchsource}/0006-pinetab-accelerometer.patch"                                         # Accelerometer
          "${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch"                                 # Audio
-         "${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch"           # Bluetooth
+         "${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch")          # Bluetooth
 md5sums+=(# ALARM patches
           # Manjaro ARM Patches
           "0d47dea87f03bf36262171e01889f832"  #0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch
