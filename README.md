@@ -20,6 +20,13 @@ Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-heade
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst     
     
+or
+
+Copy linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst and linux-manjaro-aarch64-headers-x.x.x-x-aarch64.pkg.tar.zst on your Archlinux ARM aarch64 system and run :
+
+    sudo pacman -U linux-manajro-aarch64-x.x.x-x-aarch64.pkg.tar.zst  
+    sudo pacman -U linux-manjaro-aarch64-headers-x.x.x-x-aarch64.pkg.tar.zst   
+    
 # Build on Archlinux ARM aarch64 system
 
     cd linux-aarch64-edge
