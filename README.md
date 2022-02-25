@@ -27,6 +27,15 @@ Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-heade
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst 
 
+# Prebuild package
+
+Prebuild package are available at https://repo.archlinuxrepo.dev/aarch64/kernel
+
+You can add this repo to your pacman.conf
+
+    [kernel]
+    SigLevel = Optional TrustAll
+    Server = https://repo.archlinuxrepo.dev/$arch/$repo
 
 # Contact info
 
