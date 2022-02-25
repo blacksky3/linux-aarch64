@@ -9,7 +9,7 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
 
 # Build on Archlinux x86_64 system
 
-    cd {linux-aarch64-edge-cross-build,linux-manjaro
+    cd {linux-aarch64-edge-cross-build,linux-manjaro-aarch64-cross-build}
     export CARCH="aarch64"
     makepkg -s
     
