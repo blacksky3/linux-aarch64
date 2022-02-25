@@ -48,6 +48,12 @@ You can add this repo to your pacman.conf
     [kernel]
     SigLevel = Optional TrustAll
     Server = https://repo.archlinuxrepo.dev/$arch/$repo
+    
+# Sources
+
+https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
+
+https://gitlab.manjaro.org/manjaro-arm/packages/core/linux
 
 # Contact info
 
