@@ -29,10 +29,13 @@ Copy linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst and linux-manjaro-aarch64
     
 # Build on Archlinux ARM aarch64 system
 
-    cd linux-aarch64-edge
+    cd {linux-aarch64-edge,linux-manjaro-aarch64}
     makepkg -s
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
-    sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst 
+    sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst
+    or
+    sudo pacman -U linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst  
+    sudo pacman -U linux-manharo-aarch64-headers-x.x.x-x-aarch64.pkg.tar.zst  
 
 # Prebuild package
 
