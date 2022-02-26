@@ -5,7 +5,15 @@
 #|_.__/|_|\__,_|\___|_|\_\___/_|\_\\__, |____/
 #                                  |___/
 
+#Maintainer: blacksky3 <blacksky3@tuta.io> <https://github.com/blacksky3>
+#Credits: Dan Johansen <strit@manjaro.org>
+#Credits: Kevin Mihelich <kevin@archlinuxarm.org>
+
+################################# Arch ################################
+
 KARCH=arm64
+
+#######################################################################
 
 pkgbase=linux-aarch64-edge
 pkgname=("$pkgbase" "$pkgbase-headers")
@@ -17,25 +25,25 @@ for _p in "${pkgname[@]}"; do
 done
 pkgver=5.16.11
 pkgrel=1
-arch=('aarch64')
-url="https://www.kernel.org/"
+arch=(aarch64)
+url='https://www.kernel.org/'
 license=(GPL-2.0)
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
-options=('!strip')
-source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
-        "0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
-        "0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch"
-        "config"
-        "linux.preset"
-        "60-linux.hook"
-        "90-linux.hook")
-md5sums=("SKIP"
-         "91d1298599aa31b10f1f3954a450b6c3"  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-         "3b781286c0b97cec552ad6c8a7a019dd"  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-         "7e659567617fce5a13c0b24f0b6601be"  #config
-         "41cb5fef62715ead2dd109dbea8413d6"  #linux.preset
-         "0a5f16bfec6ad982a2f6782724cca8ba"  #60-linux.hook
-         "3dc88030a8f2f5a5f97266d99b149f77") #90-linux.hook
+makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
+options=(!strip)
+source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
+        0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+        0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+        config
+        linux.preset
+        60-linux.hook
+        90-linux.hook)
+sha256sums=(SKIP                                                              #linux-5.x.x.tar.xz
+            c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+            ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+            2f7f1000aa0690288a27b99b9e9ea3c3d3bdb804aa0328a64989b4def4b8e654  #config
+            6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255  #linux.preset
+            452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c  #60-linux.hook
+            71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d) #90-linux.hook
 
 prepare(){
 
@@ -87,12 +95,12 @@ build(){
 }
 
 _package(){
-  pkgdesc="The Linux Kernel and modules - AArch64 multi-platform"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  pkgdesc='The Linux Kernel and modules - AArch64 multi-platform'
+  depends=(coreutils linux-firmware kmod 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("linux=${pkgver}" "WIREGUARD-MODULE")
-  replaces=('linux-armv8')
-  conflicts=('linux')
+  provides=("linux=${pkgver}" WIREGUARD-MODULE)
+  replaces=(linux-armv8)
+  conflicts=(linux)
   install=${pkgbase}.install
 
   cd "${srcdir}"/linux-$pkgver
@@ -126,9 +134,9 @@ _package(){
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel - AArch64 multi-platform"
+  pkgdesc='Header files and scripts for building modules for linux kernel - AArch64 multi-platform'
   provides=("linux-headers=${pkgver}")
-  conflicts=('linux-headers')
+  conflicts=(linux-headers)
   depends=("${pkgbase}")
 
   cd "${srcdir}"/linux-$pkgver
