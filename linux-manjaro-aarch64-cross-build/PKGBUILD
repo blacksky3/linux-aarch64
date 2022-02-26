@@ -41,7 +41,7 @@ md5sums=("SKIP"
 
 # Manjaro patches
 manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/master
-source+=( # ALARM patches
+source+=(# ALARM patches
          # Manjaro ARM Patches
          "${manjaropatchsource}/0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch"            # Pine64
          "${manjaropatchsource}/0002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch"                # Nanopi Neo Plus 2
