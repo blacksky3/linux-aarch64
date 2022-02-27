@@ -34,10 +34,10 @@ makedepends=(make xmlto docbook-xsl kmod inetutils bc git uboot-tools dtc
 options=(!strip)
 
 archlinuxarmpatchsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/37b6258b0b6a409722a647236db4840a4fb81d8f/core/linux-aarch64
-manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/tree/f9abcab5512abb1724a6000cc854b02ac2a8abf1
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/tree/f9abcab5512abb1724a6000cc854b02ac2a8abf1
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
-        ${manjaropatchsource}/config
+        ${manjarosource}/config
         linux.preset
         60-linux.hook
         90-linux.hook
@@ -46,39 +46,39 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${archlinuxarmpatchsource}/0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
         # ALARM patches
         # Manjaro ARM Patches
-        ${manjaropatchsource}/0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # Pine64
-        ${manjaropatchsource}/0002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2
-        ${manjaropatchsource}/0003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro
-        ${manjaropatchsource}/0004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid
-        ${manjaropatchsource}/0005-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch          # Panfrost
-        ${manjaropatchsource}/0006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firelfy Station P1
-        ${manjaropatchsource}/0007-typec-displayport-some-devices-have-pin-assignments-reversed.patch  # DP Alt Mode
-        ${manjaropatchsource}/0008-Add-megis-extcon-changes-to-fusb302.patch                           # DP Alt Mode
-        ${manjaropatchsource}/0009-usb-typec-Add-megis-typex-to-extcon-bridge-driver.patch             # DP Alt Mode
-        ${manjaropatchsource}/0010-arm64-rockchip-add-DP-ALT-rockpro64.patch                           # DP Alt mode - RockPro64
-        ${manjaropatchsource}/0011-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch          # DP Alt mode
-        ${manjaropatchsource}/0012-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
-        ${manjaropatchsource}/0013-arm64-dts-rockchip-add-typec-extcon-hack.patch                      # DP Alt mode
-        ${manjaropatchsource}/0014-drm-meson-add-YUV422-output-support.patch                           # G12B
-        ${manjaropatchsource}/0015-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch          # Beelink
-        ${manjaropatchsource}/0016-add-ugoos-device.patch                                              # Ugoos
-        ${manjaropatchsource}/0017-drm-panfrost-scheduler-fix.patch                                    # Panfrost
-        ${manjaropatchsource}/0018-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch          # RockPro64
-        ${manjaropatchsource}/0019-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399
-        ${manjaropatchsource}/0020-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip
-        #${manjaropatchsource}/0021-arm-dts-rockchip-firefly-station-m2.patch                          # Firefly Station M2
-        #${manjaropatchsource}/0022-add-dts-rk3568-station-p2.patch                                    # Firefly Station P2
-        #${manjaropatchsource}/0023-add-dts-rk3568-radxa-rock3a.patch                                  # Radxa Rock3A
-        ${manjaropatchsource}/0024-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Rock Pi 4
+        ${manjarosource}/0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # Pine64
+        ${manjarosource}/0002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2
+        ${manjarosource}/0003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro
+        ${manjarosource}/0004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid
+        ${manjarosource}/0005-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch          # Panfrost
+        ${manjarosource}/0006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firelfy Station P1
+        ${manjarosource}/0007-typec-displayport-some-devices-have-pin-assignments-reversed.patch  # DP Alt Mode
+        ${manjarosource}/0008-Add-megis-extcon-changes-to-fusb302.patch                           # DP Alt Mode
+        ${manjarosource}/0009-usb-typec-Add-megis-typex-to-extcon-bridge-driver.patch             # DP Alt Mode
+        ${manjarosource}/0010-arm64-rockchip-add-DP-ALT-rockpro64.patch                           # DP Alt mode - RockPro64
+        ${manjarosource}/0011-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch          # DP Alt mode
+        ${manjarosource}/0012-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
+        ${manjarosource}/0013-arm64-dts-rockchip-add-typec-extcon-hack.patch                      # DP Alt mode
+        ${manjarosource}/0014-drm-meson-add-YUV422-output-support.patch                           # G12B
+        ${manjarosource}/0015-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch          # Beelink
+        ${manjarosource}/0016-add-ugoos-device.patch                                              # Ugoos
+        ${manjarosource}/0017-drm-panfrost-scheduler-fix.patch                                    # Panfrost
+        ${manjarosource}/0018-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch          # RockPro64
+        ${manjarosource}/0019-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399
+        ${manjarosource}/0020-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip
+        #${manjarosource}/0021-arm-dts-rockchip-firefly-station-m2.patch                          # Firefly Station M2
+        #${manjarosource}/0022-add-dts-rk3568-station-p2.patch                                    # Firefly Station P2
+        #${manjarosource}/0023-add-dts-rk3568-radxa-rock3a.patch                                  # Radxa Rock3A
+        ${manjarosource}/0024-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Rock Pi 4
         # Pinebook, PinePhone and PineTab patches
-        ${manjaropatchsource}/0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth
-        ${manjaropatchsource}/0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth
-        ${manjaropatchsource}/0003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth
-        ${manjaropatchsource}/0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth
-        ${manjaropatchsource}/0005-staging-add-rtl8723cs-driver.patch                                  # Wifi
-        ${manjaropatchsource}/0006-pinetab-accelerometer.patch                                         # Accelerometer
-        ${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch                                 # Audio
-        ${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch)          # Bluetooth
+        ${manjarosource}/0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth
+        ${manjarosource}/0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth
+        ${manjarosource}/0003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth
+        ${manjarosource}/0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth
+        ${manjarosource}/0005-staging-add-rtl8723cs-driver.patch                                  # Wifi
+        ${manjarosource}/0006-pinetab-accelerometer.patch                                         # Accelerometer
+        ${manjarosource}/0007-enable-jack-detection-pinetab.patch                                 # Audio
+        ${manjarosource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch)          # Bluetooth
 
 prepare(){
 
