@@ -31,16 +31,18 @@ license=(GPL-2.0)
 makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
 options=(!strip)
 
-manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/master
+
+archlinuxarmpatchsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/37b6258b0b6a409722a647236db4840a4fb81d8f/core/linux-aarch64
+manjaropatchsource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/tree/f9abcab5512abb1724a6000cc854b02ac2a8abf1
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
-        config
+        ${manjaropatchsource}/config
         linux.preset
         60-linux.hook
         90-linux.hook
         # linux-aarch64 patches <https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64>
-        0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-        0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+        ${archlinuxarmpatchsource}/0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+        ${archlinuxarmpatchsource}/0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
         # ALARM patches
         # Manjaro ARM Patches
         ${manjaropatchsource}/0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # Pine64
@@ -76,42 +78,6 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjaropatchsource}/0006-pinetab-accelerometer.patch                                         # Accelerometer
         ${manjaropatchsource}/0007-enable-jack-detection-pinetab.patch                                 # Audio
         ${manjaropatchsource}/0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch)          # Bluetooth
-sha256sums=(SKIP                                                              #linux-5.x.x.tar.xz
-            3ac04657fb4a2e9292bf95c4cf22ca3fce0345ceada995745f7b513ff104201a  #config
-            6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255  #linux.preset
-            452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c  #60-linux.hook
-            71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d  #90-linux.hook
-            c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c  #0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-            ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66  #0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-            8fac73a0d2b2c60a760407ec55648e1b07d7dadd6170599da62b8dc049c6d456  #0001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch
-            f4d9a0a1861d079d2f58538686fb425a43ab23e132dccd1a7f6ceb4fd7ec3e38  #0002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch
-            92297624436557fd1e12f50222aa296009dd59ab114abe55508f0927e831ce6c  #0003-drm-bridge-analogix_dp-Add-enable_psr-param.patch
-            85c0bed95d017d6cbec240f560ed189155dbc594cdf921a7f4a45c4e13326552  #0004-gpu-drm-add-new-display-resolution-2560x1440.patch
-            5cc20a27f0d7b1b55281d5d0a665fcfa8c4ebcb02a855fb5ccbade18912b37d7  #0005-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch
-            71d398a592215e17fd0f67fe8e4e5cae424de63dae9dcedb8e0921a0d2c38b82  #0006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch
-            b2cb22224fd46fff1b26732aba96e2dcd7ef3c36d4360c6c0ff89e7cc48c0d66  #0007-typec-displayport-some-devices-have-pin-assignments-reversed.patch
-            dbbd3f393360b5e84d1d5b95065c4b163b0848bd92df57dc3d65b8e218293107  #0008-Add-megis-extcon-changes-to-fusb302.patch
-            9fa4677897810ea32b0cbcc986efb5e63a838bf0f1d94a48aff350c96806f95d  #0009-usb-typec-Add-megis-typex-to-extcon-bridge-driver.patch
-            fdafbf08c88d279ddf10babab91d27a3026f38b84f15953e5a64701f718adff6  #0010-arm64-rockchip-add-DP-ALT-rockpro64.patch
-            c547b3362c701d9bbce7179763c25a70453b6eb4d80f59b44a6057c6f6ed6719  #0011-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch
-            21af48bffff108e44a20ed6141abdb13202f5c114946c9d55483a8e7e6839e66  #0012-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch
-            21e3fa4f2bc3146f47eb93aef2f99836797c8b6b221a0ea0d1bd8bdbbfd12bcb  #0013-arm64-dts-rockchip-add-typec-extcon-hack.patch
-            37ba2bf45ba321dc1dd796653de193e241fbc021ba7cdb4e4741b39acff84860  #0014-drm-meson-add-YUV422-output-support.patch
-            6aa38c068c18a15b17f806aa398b0e3940af2f7b47827fd8484ed8d05e4cd516  #0015-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch
-            c93a71977c568765bc551f313a87821a7a9ad1301862e581aea5126227c6172e  #0016-add-ugoos-device.patch
-            763224582f19b7cd04b24b403b68d3525c7b7823438aa530d3d4dfa1670442a1  #0017-drm-panfrost-scheduler-fix.patch
-            789cff5629787892a528cbb1a6abf66893f81bbf18f3292ca02d443758103238  #0018-arm64-dts-rockchip-Add-pcie-bus-scan-delay-to-rockpr.patch
-            e9758d04c00deb87d80a00292f158a69ef0f7f99cf2f090b26e6d2396c6f5912  #0019-drm-rockchip-support-gamma-control-on-RK3399.patch
-            99b912748e01ce84458708114571abcac73a5b7ec95bf0cfa92c7fa7a3990d7b  #0020-media-rockchip-rga-do-proper-error-checking-in-probe.patch
-            a364abb828cb3b066b97d5eed69f40a20871befd90e19a9463aa60fd87ba030c  #0024-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch
-            89bb0a7a7639320077e8b73b90237661cd1ff73cb3785445d3b401ce127d915e  #0001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch
-            1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d  #0002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch
-            50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4  #0003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch
-            d9495dc6f26114e973d8782088d25e69b299b20c31a60bfb439509ac456ed43a  #0004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch
-            065e16cdc31e6652cf8dac5515b4e0a8e6002134a8d03c8035466c03c739e5de  #0005-staging-add-rtl8723cs-driver.patch
-            0e6453bf258c34349e5cc76811d804392aaa1ef9230c343719879682aaff7515  #0006-pinetab-accelerometer.patch
-            1ef1c44720798f5e7dcd57ec066e11cb0d4c4db673efcb74b2239534add9564c  #0007-enable-jack-detection-pinetab.patch
-            bf11a81ddb069c13720b90b8f2569a656d39c22d34bf12ece80f8b606a41f408) #0008-Bluetooth-Read-codec-capabilities-only-if-supported.patch
 
 prepare(){
 
@@ -280,3 +246,40 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
+
+sha256sums=(6d186158a4c44a4df438e0286ee8186f1cc9cc9d8a909d4c3e25a4f7eca8b023
+            3ac04657fb4a2e9292bf95c4cf22ca3fce0345ceada995745f7b513ff104201a
+            6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
+            452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
+            71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d
+            c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c
+            ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66
+            485c461ce20de0835ae27e56adeb194f0a18f91a022d7b349710aa9e69043356
+            679836037c69a72513d133520948bd0ca62b17ffb36430cebfd30bd2a4b43fcb
+            87572ce987a80bb28ea25f40650c0e8f84fc00a0ad7bf8ce01aa107de36fed1c
+            e53e1da546b3bd4a1aa18539ccc7fb3ad6f5c53aa191082f39f3651a2f1d40cb
+            799e2403a95429ff380038e05700cd24e9220bf6fea76ad10ffd25385d0de09d
+            5cb8d800241f4ff132cc6e9c57db743aa46589b56d49bf4d462b5cb7c8e27bee
+            49cc5177f49fec81f0fe6785649161b1b4a02ec9c76a89f3b18af3bcc99aba85
+            f333e7aee7c5f099128241f6520ed0320d0e1d196a75f426e5257efe75f6d4e1
+            8cc43f2297c977a5ce3aca7f02192fe9726ec8963f8ad8e7ab266ec3687bc959
+            e4afaa79a96857c8778ca997d5cbf26e06866ccd72b82c231c7e8535370bbbd3
+            a9ea86ed01c615ab6f210eff1500776d78d29144f9c9423c13bc4fc6149a0eed
+            13dcf28ea6ce7938ea9584720a2003ab75c89af8f35703237f72fd307056e2c9
+            ec11507b86e819689050146c1047cf9e926895a74547dbc185ad7ecbf5aa782c
+            bb4c32a2b12f470b0286a71e16b229d7969ecf7cb26261b805de0afd3a2141c0
+            b3effd105f449873191e136aeb24d43ca888490216ed5e3d3a319ddfd183916a
+            d8006bfb4aa607655c6563ceba7bc5da8b61d83664c739d91f9a4569076593bd
+            1b60a302a7de9d9a70e286dc4a69d8845b82d16225e7b380cfb33a731d4d3a9a
+            d11025755493be29be762bfdeb54ab199e070b7a51ee26b23a54ddf2cac059d1
+            8b6f4630d7e2e7f309f9f70e41253f2c450432a40b1cf810cbbb6f63be9e2df7
+            61745f02a8b18dc12b602d170c13636404f173b32304190f4f774e355077094a
+            e05c3f9d2e1e08feba413fdcf996c12318356f57df8c8acd19e0939d050bbed5
+            61923d22bc163fcb3152b5cc541b2a8bba4c5f54495c69da621d86503c3b8799
+            c70ff7bc6f584546d0835d1dee1a38fd3aeb8f68d7dbcc8601416d6b33ce5afe
+            ebe6bf7cd4bf7147b6e0eae65e48ce4d0813d6b0cd5f1161e7c45eaa19720ade
+            d68f675951e1be8883919d809bc49b0d7cd2634a51a1515bad533b8904a9566f
+            3513f3e8fde121ad6739aa313c90d2903c7dabf94bc1e54a0a1647726b77c256
+            f536cdc46730463e38053446531a9bebdd89a9fa3862873a44eebecfc923f4c8
+            b888c6875e5a6d470c8b1c21ddf87ad1b6fd3a716fe873459b5215f3f8c92b8e
+            d0b1c8bf7313178724dd2b927b831f41fd9fdeb56b9131458b529199b92fdfc0)
