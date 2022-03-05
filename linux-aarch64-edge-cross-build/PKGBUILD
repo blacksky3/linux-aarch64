@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.11
+pkgver=5.16.12
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -33,7 +33,7 @@ makedepends=(make xmlto docbook-xsl kmod inetutils bc git uboot-tools dtc
              aarch64-linux-gnu-glibc aarch64-linux-gnu-linux-api-headers)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/37b6258b0b6a409722a647236db4840a4fb81d8f/core/linux-aarch64
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/f1af436fb97239ed31ad564bc0aad6859fbfcf80/core/linux-aarch64
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${archlinuxarmsource}/0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
@@ -211,7 +211,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=(6d186158a4c44a4df438e0286ee8186f1cc9cc9d8a909d4c3e25a4f7eca8b023
+sha256sums=(bb5a1df15a10a715807a44872ff4fe775337aae445285181f1d1ba0c78b1d7f2
             c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c
             ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66
             2f7f1000aa0690288a27b99b9e9ea3c3d3bdb804aa0328a64989b4def4b8e654
