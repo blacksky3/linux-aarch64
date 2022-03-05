@@ -7,28 +7,28 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
 
 - linux-aarch64-edge : 5.16.12
 
-- linux-manjaro-aarch64 : 5.16.11
+- linux-manjaro-aarch64 : 5.16.12
 
 # Build on Archlinux x86_64 system
 
     cd {linux-aarch64-edge-cross-build,linux-manjaro-aarch64-cross-build}
     export CARCH="aarch64"
     makepkg -s
-    
+
 ## Installing compiled packages on your Archlinux ARM aarch64 system  
 
 Copy linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst and linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst on your Archlinux ARM aarch64 system and run :
 
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst     
-    
+
 or
 
 Copy linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst and linux-manjaro-aarch64-headers-x.x.x-x-aarch64.pkg.tar.zst on your Archlinux ARM aarch64 system and run :
 
     sudo pacman -U linux-manajro-aarch64-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-manjaro-aarch64-headers-x.x.x-x-aarch64.pkg.tar.zst   
-    
+
 # Build on Archlinux ARM aarch64 system
 
     cd {linux-aarch64-edge,linux-manjaro-aarch64}
@@ -48,7 +48,7 @@ You can add this repo to your pacman.conf
     [kernel]
     SigLevel = Optional TrustAll
     Server = https://www.blacksky3.com/$arch/$repo
-    
+
 # Sources
 
 https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
