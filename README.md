@@ -41,7 +41,7 @@ Copy linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst and linux-manjaro-aarch64
 
 # Prebuild package
 
-Prebuild package are available at https://repo.archlinuxrepo.dev/aarch64/kernel
+Prebuild package are available at https://wwww.blacksky3.com/aarch64/kernel
 
 You can add this repo to your pacman.conf
 
