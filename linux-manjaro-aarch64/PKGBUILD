@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.12
+pkgver=5.16.13
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -31,8 +31,8 @@ license=(GPL-2.0)
 makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/f1af436fb97239ed31ad564bc0aad6859fbfcf80/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/5ac9893da0e89912db0c8d6a85cb27b99eb990d6
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/fbe494e99334dd6a8d494dce1b18fa17e44888fc/core/linux-aarch64
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/88dea1bebf0a3dd246aeae21d0d6cb95908858ea
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -262,7 +262,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=(bb5a1df15a10a715807a44872ff4fe775337aae445285181f1d1ba0c78b1d7f2
+sha256sums=(2f8a9800833aac8256be3c1c6fc87f4dc54bcca150573395eb3e5556c7267fbb
             5b63d257de8ae824514a1b68eecdfcc0fb0823926002c8b12bbc7bf0bfbe1c0e
             6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
             452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
