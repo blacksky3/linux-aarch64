@@ -32,7 +32,7 @@ makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/fbe494e99334dd6a8d494dce1b18fa17e44888fc/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/88dea1bebf0a3dd246aeae21d0d6cb95908858ea
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/ad338c8941d322575119d504a98336e7c0931be9
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
