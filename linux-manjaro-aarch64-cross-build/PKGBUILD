@@ -28,7 +28,7 @@ pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
 license=(GPL-2.0)
-makedepends=(make xmlto docbook-xsl kmod inetutils bc git uboot-tools dtc
+makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools dtc
              aarch64-linux-gnu-binutils aarch64-linux-gnu-gcc aarch64-linux-gnu-gdb
              aarch64-linux-gnu-glibc aarch64-linux-gnu-linux-api-headers)
 options=(!strip)
