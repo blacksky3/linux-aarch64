@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.14
+pkgver=5.16.16
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -33,8 +33,8 @@ makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools
              aarch64-linux-gnu-glibc aarch64-linux-gnu-linux-api-headers)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/fbe494e99334dd6a8d494dce1b18fa17e44888fc/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/ad338c8941d322575119d504a98336e7c0931be9
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/031b913abfd8978c9c33dbbff42a19d2719b79c2/core/linux-aarch64
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/ccc11fcd371dc9d1a1b7f2b440ca6b61f955d34c
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -43,44 +43,45 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         90-linux.hook
         # linux-aarch64 patches <https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64>
         ${archlinuxarmsource}/0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-        ${archlinuxarmsource}/0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-        # ALARM patches
-        # Manjaro ARM Patches
+        # Assorted ALARM patches
+        # Assorted Manjaro ARM patches
         ${manjarosource}/1001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # Pine64
         ${manjarosource}/1002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2
         ${manjarosource}/1003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro
         ${manjarosource}/1004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid
-        ${manjarosource}/1005-nuumio-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch          # Panfrost
+        ${manjarosource}/1005-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch                 # Panfrost
         ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firelfy Station P1
-        ${manjarosource}/1007-ayufan-drm-rockchip-add-support-for-modeline-32MHz-e.patch          # DP Alt mode
+        ${manjarosource}/1007-drm-rockchip-add-support-for-modeline-32MHz-e.patch                 # DP Alt Mode
         ${manjarosource}/1008-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
-        ${manjarosource}/1009-drm-meson-add-YUV422-output-support.patch                           # G12B
+        ${manjarosource}/1009-drm-meson-add-YUV422-output-support.patch                           # Meson G12B
         ${manjarosource}/1010-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch          # Beelink
-        ${manjarosource}/1011-add-ugoos-device.patch                                              # Ugoos
+        ${manjarosource}/1011-add-dts-meson-g12b-ugoos-am6-plus.patch                             # Meson Ugoos
         ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost
         ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
-        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399
-        ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip
+        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP
+        ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip RGA
         #${manjarosource}/1016-arm-dts-rockchip-firefly-station-m2.patch                          # Firefly Station M2
         #${manjarosource}/1017-add-dts-rk3568-station-p2.patch                                    # Firefly Station P2
-        #${manjarosource}/1018-add-dts-rk3568-radxa-rock3a.patch                                  # Radxa Rock3A
-        ${manjarosource}/1019-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Rock Pi 4
+        #${manjarosource}/1018-add-dts-rk3568-radxa-rock3a.patch                                  # Radxa Rock 3A
+        ${manjarosource}/1019-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4
         ${manjarosource}/1020-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2]
         ${manjarosource}/1021-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2]
-        ${manjarosource}/1022-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Rock Pi 4
+        ${manjarosource}/1022-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
         # Assorted Pinebook, PinePhone and PineTab patches
         ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth
         ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth
         ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth
         ${manjarosource}/2004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth
-        ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Wifi
+        ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Realtek WiFi
         ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # Accelerometer
         ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # Audio
         ${manjarosource}/2008-Bluetooth-Read-codec-capabilities-only-if-supported.patch           # Bluetooth
         ${manjarosource}/2009-btsdio-Do-not-bind-to-non-removable-BCM4345-and-BCM43455.patch      # Bluetooth
+        ${manjarosource}/2010-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth
+        ${manjarosource}/2011-dts-rockchip-Adapt-and-adopt-Type-C-support-from-Pin.patch          # DP Alt Mode
         # Pinebook Pro Type-C patches from megous; original patch numbers found
         # on https://xff.cz/kernels/5.16/patches/ are retained, with just the first
-        # digit changed from 3 to 0, to make tracking easier
+        # digit changed from 0 to 3, to make tracking easier
         ${manjarosource}/3172-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch
         ${manjarosource}/3174-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support.patch
         ${manjarosource}/3176-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinct.patch
@@ -264,14 +265,13 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=(7a8ba58659d5e5f0f9e1e0a4fbed39ac520149d24d7aec4636fcf8255d0574f6
+sha256sums=(cca7d6e053e33f44af1b39f7becec73a387911d81ede5a84ecf671692533138f
             5b63d257de8ae824514a1b68eecdfcc0fb0823926002c8b12bbc7bf0bfbe1c0e
             6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
             452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
             71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d
             c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c
-            ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66
-            8d616fa1c56803861e4e014bb200e7bb7840d1ddc2fd7056d4afd372a0738bba
+            d7a15909085630991499947120b0b1a6457bd7e450992dd5f10406af1b1fcca7
             f4d9a0a1861d079d2f58538686fb425a43ab23e132dccd1a7f6ceb4fd7ec3e38
             92297624436557fd1e12f50222aa296009dd59ab114abe55508f0927e831ce6c
             85c0bed95d017d6cbec240f560ed189155dbc594cdf921a7f4a45c4e13326552
@@ -299,6 +299,8 @@ sha256sums=(7a8ba58659d5e5f0f9e1e0a4fbed39ac520149d24d7aec4636fcf8255d0574f6
             1ef1c44720798f5e7dcd57ec066e11cb0d4c4db673efcb74b2239534add9564c
             bf11a81ddb069c13720b90b8f2569a656d39c22d34bf12ece80f8b606a41f408
             5afdbcc14341953895584cf23e13e965542a9becc82d303f8af94c1aa18cebc1
+            395de0c24d57751a12d7f30c1247ed1f0edd9d203fdfde38ca058d5b2f14c7b4
+            8482af06b8bdde7718eda200493b9251eec3b12b8a4a9015602ae28d26f6eb16
             70608d8bb513df20efa29bbad26bae329c97ed742e6d1c62f21e8ddfec888243
             30b796eecaa678b4be647c31639d0b662e3e077897e832cfa9361287fc08e9b2
             30486d92105cc3267b58221fd813f3c585a460d50b68313fb2197bdf8b0b6df7
