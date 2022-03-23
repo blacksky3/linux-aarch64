@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.16.16
+pkgver=5.17
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -31,8 +31,8 @@ license=(GPL-2.0)
 makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/031b913abfd8978c9c33dbbff42a19d2719b79c2/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/ccc11fcd371dc9d1a1b7f2b440ca6b61f955d34c
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/ae861a830e6e1d6d3e37c94462c8f48671aa9b79/core/linux-aarch64
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/b4ecc87c66e8e582b56c6879f2bc8fae38c92284
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -52,20 +52,17 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firelfy Station P1
         ${manjarosource}/1007-drm-rockchip-add-support-for-modeline-32MHz-e.patch                 # DP Alt Mode
         ${manjarosource}/1008-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
-        ${manjarosource}/1009-drm-meson-add-YUV422-output-support.patch                           # Meson G12B
-        ${manjarosource}/1010-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch          # Beelink
-        ${manjarosource}/1011-add-dts-meson-g12b-ugoos-am6-plus.patch                             # Meson Ugoos
+        #${manjarosource}/1009-drm-meson-add-YUV422-output-support.patch                          # Meson G12B
+        ${manjarosource}/1010-arm64-dts-amlogic-add-initial-Beelink-GT1-Ultimate-dev.patch        # Beelink
+        ${manjarosource}/1011-arm64-dts-amlogic-add-meson-g12b-ugoos-am6-plus.patch               # Meson Ugoos
         ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost
         ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
         ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP
         ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip RGA
-        #${manjarosource}/1016-arm-dts-rockchip-firefly-station-m2.patch                          # Firefly Station M2
-        #${manjarosource}/1017-add-dts-rk3568-station-p2.patch                                    # Firefly Station P2
-        #${manjarosource}/1018-add-dts-rk3568-radxa-rock3a.patch                                  # Radxa Rock 3A
-        ${manjarosource}/1019-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4
-        ${manjarosource}/1020-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2]
-        ${manjarosource}/1021-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2]
-        ${manjarosource}/1022-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
+        ${manjarosource}/1016-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4
+        ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2]
+        ${manjarosource}/1018-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2]
+        ${manjarosource}/1019-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
         # Assorted Pinebook, PinePhone and PineTab patches
         ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth
         ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth
@@ -74,27 +71,25 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Realtek WiFi
         ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # Accelerometer
         ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # Audio
-        ${manjarosource}/2008-Bluetooth-Read-codec-capabilities-only-if-supported.patch           # Bluetooth
-        ${manjarosource}/2009-btsdio-Do-not-bind-to-non-removable-BCM4345-and-BCM43455.patch      # Bluetooth
-        ${manjarosource}/2010-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth
-        ${manjarosource}/2011-dts-rockchip-Adapt-and-adopt-Type-C-support-from-Pin.patch          # DP Alt Mode
+        ${manjarosource}/2008-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth
+        ${manjarosource}/2009-dts-rockchip-Adapt-and-adopt-Type-C-support-from-Pin.patch          # DP Alt Mode
         # Pinebook Pro Type-C patches from megous; original patch numbers found
-        # on https://xff.cz/kernels/5.16/patches/ are retained, with just the first
+        # on https://xff.cz/kernels/5.17/patches/ are retained, with just the first
         # digit changed from 0 to 3, to make tracking easier
-        ${manjarosource}/3172-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch
-        ${manjarosource}/3174-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support.patch
-        ${manjarosource}/3176-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinct.patch
-        ${manjarosource}/3376-drm-rockchip-cdn-dp-Disable-CDN-DP-on-disconnect.patch
-        ${manjarosource}/3392-usb-typec-fusb302-Set-the-current-before-enabling-pu.patch
-        ${manjarosource}/3396-usb-typec-fusb302-Update-VBUS-state-even-if-VBUS-int.patch
-        ${manjarosource}/3398-usb-typec-fusb302-Add-OF-extcon-support.patch
-        ${manjarosource}/3399-usb-typec-fusb302-Fix-register-definitions.patch
-        ${manjarosource}/3400-usb-typec-fusb302-Clear-interrupts-before-we-start-t.patch
-        ${manjarosource}/3401-usb-typec-typec-extcon-Add-typec-extcon-bridge-drive.patch
-        ${manjarosource}/3402-phy-rockchip-typec-Make-sure-the-plug-orientation-is.patch
-        ${manjarosource}/3457-phy-rockchip-inno-usb2-More-robust-charger-detection.patch
-        ${manjarosource}/3458-usb-typec-extcon-Don-t-touch-charger-proprties.patch
-        ${manjarosource}/3459-arm64-dts-rk3399-pinebook-pro-Don-t-allow-usb2-phy-d.patch)
+        ${manjarosource}/3170-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch
+        ${manjarosource}/3172-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support.patch
+        ${manjarosource}/3174-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinct.patch
+        ${manjarosource}/3178-arm64-dts-rk3399-pinebook-pro-Don-t-allow-usb2-phy-d.patch
+        ${manjarosource}/3339-drm-rockchip-cdn-dp-Disable-CDN-DP-on-disconnect.patch
+        ${manjarosource}/3355-usb-typec-fusb302-Set-the-current-before-enabling-pu.patch
+        ${manjarosource}/3359-usb-typec-fusb302-Update-VBUS-state-even-if-VBUS-int.patch
+        ${manjarosource}/3361-usb-typec-fusb302-Add-OF-extcon-support.patch
+        ${manjarosource}/3362-usb-typec-fusb302-Fix-register-definitions.patch
+        ${manjarosource}/3363-usb-typec-fusb302-Clear-interrupts-before-we-start-t.patch
+        ${manjarosource}/3364-usb-typec-typec-extcon-Add-typec-extcon-bridge-drive.patch
+        ${manjarosource}/3365-phy-rockchip-typec-Make-sure-the-plug-orientation-is.patch
+        ${manjarosource}/3372-phy-rockchip-inno-usb2-More-robust-charger-detection.patch
+        ${manjarosource}/3373-usb-typec-extcon-Don-t-touch-charger-proprties.patch)
 
 prepare(){
 
@@ -264,13 +259,12 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=(cca7d6e053e33f44af1b39f7becec73a387911d81ede5a84ecf671692533138f
-            5b63d257de8ae824514a1b68eecdfcc0fb0823926002c8b12bbc7bf0bfbe1c0e
+sha256sums=(555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1
+            c3cde396f9635617125826c2da50814838a03bb4f59809099905b191de53e66f
             6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
             452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
             71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d
             c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c
-            ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66
             d7a15909085630991499947120b0b1a6457bd7e450992dd5f10406af1b1fcca7
             f4d9a0a1861d079d2f58538686fb425a43ab23e132dccd1a7f6ceb4fd7ec3e38
             92297624436557fd1e12f50222aa296009dd59ab114abe55508f0927e831ce6c
@@ -279,7 +273,6 @@ sha256sums=(cca7d6e053e33f44af1b39f7becec73a387911d81ede5a84ecf671692533138f
             71d398a592215e17fd0f67fe8e4e5cae424de63dae9dcedb8e0921a0d2c38b82
             c547b3362c701d9bbce7179763c25a70453b6eb4d80f59b44a6057c6f6ed6719
             21af48bffff108e44a20ed6141abdb13202f5c114946c9d55483a8e7e6839e66
-            37ba2bf45ba321dc1dd796653de193e241fbc021ba7cdb4e4741b39acff84860
             6aa38c068c18a15b17f806aa398b0e3940af2f7b47827fd8484ed8d05e4cd516
             c93a71977c568765bc551f313a87821a7a9ad1301862e581aea5126227c6172e
             763224582f19b7cd04b24b403b68d3525c7b7823438aa530d3d4dfa1670442a1
@@ -294,24 +287,22 @@ sha256sums=(cca7d6e053e33f44af1b39f7becec73a387911d81ede5a84ecf671692533138f
             1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d
             50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4
             d9495dc6f26114e973d8782088d25e69b299b20c31a60bfb439509ac456ed43a
-            065e16cdc31e6652cf8dac5515b4e0a8e6002134a8d03c8035466c03c739e5de
+            5e4a07087ca9e04dfab70856c8c1c30923d39e209b97e3e50f4416cb973148ca
             0e6453bf258c34349e5cc76811d804392aaa1ef9230c343719879682aaff7515
             1ef1c44720798f5e7dcd57ec066e11cb0d4c4db673efcb74b2239534add9564c
-            bf11a81ddb069c13720b90b8f2569a656d39c22d34bf12ece80f8b606a41f408
-            5afdbcc14341953895584cf23e13e965542a9becc82d303f8af94c1aa18cebc1
             395de0c24d57751a12d7f30c1247ed1f0edd9d203fdfde38ca058d5b2f14c7b4
             8482af06b8bdde7718eda200493b9251eec3b12b8a4a9015602ae28d26f6eb16
-            70608d8bb513df20efa29bbad26bae329c97ed742e6d1c62f21e8ddfec888243
-            30b796eecaa678b4be647c31639d0b662e3e077897e832cfa9361287fc08e9b2
-            30486d92105cc3267b58221fd813f3c585a460d50b68313fb2197bdf8b0b6df7
-            da92f6e730331c02d1725fd2fad60675ebc013b0ddaacc00590e22ab646e110e
-            7944ead2685d2aef0d979e22cc02066548f8d95a4728d90c347bf74299bcdabc
-            6352bb8f45b0781cb4095e2cb4a57ef8fe1282b184fbc57251d9be7aad4f6bd7
-            c1c48a179990a02c45d5f3d753ed0837ca9cb084675c6cf455b859f76b3c83c0
-            115a04e229ee398687cfa121143cbc612e559b27ca14fa0fe2965763d7bd12d4
-            9d10961570fe28d7adb7231a8ae7add60e8827848b8164e6586fbf9b2549caff
-            879223f3bc9ca16b61d7d9664a98b54ca8fc1350b157bf3c77d73c6445493674
-            622f74e913195390238436877eca299a525399c2f20e8cb3c13af39d71be01b1
-            c660cc10f466243eecc4050df983ddd87e965273bccdc69a6238746534100f74
-            e4f6be39d8f48dd9b9bf70c4aedeb407984602998de33de5858f3433962ceca5
-            08b70dc39389a1f295c824aed3890d20f4bd7a038b2071c162a8853df24ee6ca)
+            7e7937c5e9b0ea77844e01bc2c7efb3e20723be56a2e50a53d835ff3b9b17a57
+            ef202cb1641e2c5efc7e7a45f94c746f72ff61abddd95ca019cfb91e85ae8c81
+            d3a17f447dcdaa645de85383ad50ccc6401dee43a4fc0364c13754a41c018d54
+            588fa2ab6f19796f4e6bfbc21b1b6d8f5d80e9e90c2598c69ec8f6847ef51242
+            d42e4d0683875860f2068f8fcedfff5b3176b1d19c95ef9d37e63ac2d414cdf5
+            fec01bafd0e2cf6d4dd710095ff1d9ee6031032c0a3077e0a58c0e2156bc5fe2
+            7b205662d0e93ede14d0c4a3c441d338dc67be20589e53aacff966361089e4a8
+            f33411b92a2d0b7c105c002c7fd2ae1a7b821ef8615a4438bde9a17ef8057851
+            7df22431b51da07f941339cbb34fc4f36bc88a724fa86edf3eeea3138c940324
+            c9d1797ac73bc5a01bb9815b2f83811a75e481d8fb8c588e0f4991a5fa510596
+            886ab9b568bbb787f9c152ab788ca2adea25a0d181ddaac84aa564b4ee6739ac
+            128096ba16c11a5cca470cab52e5ca056681043995b8f0108a029756f70cacf3
+            41482ffc872e147bbc72ca8d5035b64446cfbb1d175b78f0a2672f8336d62970
+            36555d2170444a13d8c039b2d616001d60d9aa08a168290cd2863c4a3e54f590)
