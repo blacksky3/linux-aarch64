@@ -31,8 +31,8 @@ license=(GPL-2.0)
 makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/40fe0de83122628b3f0a5bab3c4a3b346c10cd43/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/d68667dfeb33a40a1ee5d6563ff4815e57ed9084
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/40fe0de83122628b3f0a5bab3c4a3b346c10cd4/core/linux-aarch64
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/062421c55f5051eed254509282e11da6f5b861c9
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -41,43 +41,40 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         90-linux.hook
         # linux-aarch64 patches <https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64>
         ${archlinuxarmsource}/0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-        # Assorted Manjaro ARM patches
-        ${manjarosource}/1001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # Pine64
+        ${archlinuxarmsource}/0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+        # Manjaro patches
+        ${manjarosource}/1001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # A64-based devices
         ${manjarosource}/1002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2
-        ${manjarosource}/1003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro
+        ${manjarosource}/1003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro;  From list: https://patchwork.kernel.org/project/dri-devel/patch/20200626033023.24214-2-shawn@anastas.io/
         ${manjarosource}/1004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid
         ${manjarosource}/1005-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch                 # Panfrost
-        ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firelfy Station P1
+        ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firefly Station P1
         ${manjarosource}/1007-drm-rockchip-add-support-for-modeline-32MHz-e.patch                 # DP Alt Mode
         ${manjarosource}/1008-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
-        #${manjarosource}/1009-drm-meson-add-YUV422-output-support.patch                          # Meson G12B
-        ${manjarosource}/1010-arm64-dts-amlogic-add-initial-Beelink-GT1-Ultimate-dev.patch        # Beelink
+        ${manjarosource}/1009-drm-meson-encoder-add-YUV422-output-support.patch                   # Meson G12B;  Disabled
+        ${manjarosource}/1010-arm64-dts-amlogic-add-initial-Beelink-GT1-Ultimate-dev.patch        # Beelink GT1 Ultimate
         ${manjarosource}/1011-arm64-dts-amlogic-add-meson-g12b-ugoos-am6-plus.patch               # Meson Ugoos
-        ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost
+        ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost;  Will be submitted upstream by the author
         ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
-        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP
-        ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip RGA
-        ${manjarosource}/1016-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4
-        ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2]
-        ${manjarosource}/1018-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2]
+        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP;  From list: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20211019215843.42718-1-sigmaris@gmail.com/
+        ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip RGA;  From list: https://patchwork.kernel.org/project/linux-rockchip/patch/20211120122321.20253-1-kmcopper@danwin1210.me/
+        ${manjarosource}/1016-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming
+        ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-2-christianshewitt@gmail.com/
+        ${manjarosource}/1018-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-3-christianshewitt@gmail.com/
         ${manjarosource}/1019-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
-        # Assorted Pinebook, PinePhone and PineTab patches
-        ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth
-        ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth
-        ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth
-        ${manjarosource}/2004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth
-        ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Realtek WiFi
-        ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # Accelerometer
-        ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # Audio
-        ${manjarosource}/2008-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth
-        ${manjarosource}/2009-dts-rockchip-Adapt-and-adopt-Type-C-support-from-Pin.patch          # DP Alt Mode
-        # Pinebook Pro Type-C patches from megous; original patch numbers found
-        # on https://xff.cz/kernels/5.17/patches/ are retained, with just the first
-        # digit changed from 0 to 3, to make tracking easier
-        ${manjarosource}/3170-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch
-        ${manjarosource}/3172-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support.patch
-        ${manjarosource}/3174-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinct.patch
-        ${manjarosource}/3178-arm64-dts-rk3399-pinebook-pro-Don-t-allow-usb2-phy-d.patch
+        ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/
+        ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/
+        ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/
+        ${manjarosource}/2004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth;  The PinePhone part is in linux-next
+        ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Realtek WiFi;  Not upstreamable
+        ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # PineTab Accelerometer
+        ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # PineTab Audio
+        ${manjarosource}/2008-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth;  Will be submitted upstream by the author
+        ${manjarosource}/2009-dts-rockchip-Adapt-and-adopt-Type-C-support-from-Pin.patch          # RockPro64 DP Alt Mode;  Not upstreamable
+        ${manjarosource}/3170-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch             # Third set of patches: START
+        ${manjarosource}/3172-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support.patch          # Pinebook Pro Type-C patches from megous; original patch numbers found
+        ${manjarosource}/3174-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinct.patch          # on https://xff.cz/kernels/5.17/patches/ are retained, with just the first
+        ${manjarosource}/3178-arm64-dts-rk3399-pinebook-pro-Don-t-allow-usb2-phy-d.patch          # digit changed from 0 to 3, to make tracking easier
         ${manjarosource}/3339-drm-rockchip-cdn-dp-Disable-CDN-DP-on-disconnect.patch
         ${manjarosource}/3355-usb-typec-fusb302-Set-the-current-before-enabling-pu.patch
         ${manjarosource}/3359-usb-typec-fusb302-Update-VBUS-state-even-if-VBUS-int.patch
@@ -87,7 +84,7 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/3364-usb-typec-typec-extcon-Add-typec-extcon-bridge-drive.patch
         ${manjarosource}/3365-phy-rockchip-typec-Make-sure-the-plug-orientation-is.patch
         ${manjarosource}/3372-phy-rockchip-inno-usb2-More-robust-charger-detection.patch
-        ${manjarosource}/3373-usb-typec-extcon-Don-t-touch-charger-proprties.patch)
+        ${manjarosource}/3373-usb-typec-extcon-Don-t-touch-charger-proprties.patch)               # Third set of patches: END
 
 prepare(){
 
@@ -257,50 +254,52 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=(7cd5c5d432a25f45060868ce6a8578890e550158a2f779c4a20804b551e84c24
-            e3ef1e47479ec8dddc1b27261cce731a14218085785420d193bb4845e0c64706
-            6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
-            452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
-            71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d
-            c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c
-            d7a15909085630991499947120b0b1a6457bd7e450992dd5f10406af1b1fcca7
-            f4d9a0a1861d079d2f58538686fb425a43ab23e132dccd1a7f6ceb4fd7ec3e38
-            92297624436557fd1e12f50222aa296009dd59ab114abe55508f0927e831ce6c
-            85c0bed95d017d6cbec240f560ed189155dbc594cdf921a7f4a45c4e13326552
-            5cc20a27f0d7b1b55281d5d0a665fcfa8c4ebcb02a855fb5ccbade18912b37d7
-            71d398a592215e17fd0f67fe8e4e5cae424de63dae9dcedb8e0921a0d2c38b82
-            c547b3362c701d9bbce7179763c25a70453b6eb4d80f59b44a6057c6f6ed6719
-            21af48bffff108e44a20ed6141abdb13202f5c114946c9d55483a8e7e6839e66
-            6aa38c068c18a15b17f806aa398b0e3940af2f7b47827fd8484ed8d05e4cd516
-            c93a71977c568765bc551f313a87821a7a9ad1301862e581aea5126227c6172e
-            763224582f19b7cd04b24b403b68d3525c7b7823438aa530d3d4dfa1670442a1
-            910c9ceb91e7e1f01bcf9ba34c4c9130f50897e1d05dd694be84dbe2b0737624
-            e9758d04c00deb87d80a00292f158a69ef0f7f99cf2f090b26e6d2396c6f5912
-            99b912748e01ce84458708114571abcac73a5b7ec95bf0cfa92c7fa7a3990d7b
-            a364abb828cb3b066b97d5eed69f40a20871befd90e19a9463aa60fd87ba030c
-            d47e0e71f1cb964487ab92e6613ddfeeb53a23a5c2895ccb94799da6384e1299
-            a3a93a5aebc0cf8644a93d9c28a5f17567dda1125d6178f82d3d2a0b91a70539
-            ac72f5f425dc4efabd81fd5d6e828cbe5c0635b5c002f01f2fbc11370a4d0c11
-            c752c6a47aa031af6ce1b576344c5611ec9765bc956f08610c77fa0bb45d8dbe
-            1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d
-            50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4
-            d9495dc6f26114e973d8782088d25e69b299b20c31a60bfb439509ac456ed43a
-            5e4a07087ca9e04dfab70856c8c1c30923d39e209b97e3e50f4416cb973148ca
-            0e6453bf258c34349e5cc76811d804392aaa1ef9230c343719879682aaff7515
-            1ef1c44720798f5e7dcd57ec066e11cb0d4c4db673efcb74b2239534add9564c
-            395de0c24d57751a12d7f30c1247ed1f0edd9d203fdfde38ca058d5b2f14c7b4
-            8482af06b8bdde7718eda200493b9251eec3b12b8a4a9015602ae28d26f6eb16
-            7e7937c5e9b0ea77844e01bc2c7efb3e20723be56a2e50a53d835ff3b9b17a57
-            ef202cb1641e2c5efc7e7a45f94c746f72ff61abddd95ca019cfb91e85ae8c81
-            d3a17f447dcdaa645de85383ad50ccc6401dee43a4fc0364c13754a41c018d54
-            588fa2ab6f19796f4e6bfbc21b1b6d8f5d80e9e90c2598c69ec8f6847ef51242
-            d42e4d0683875860f2068f8fcedfff5b3176b1d19c95ef9d37e63ac2d414cdf5
-            fec01bafd0e2cf6d4dd710095ff1d9ee6031032c0a3077e0a58c0e2156bc5fe2
-            7b205662d0e93ede14d0c4a3c441d338dc67be20589e53aacff966361089e4a8
-            f33411b92a2d0b7c105c002c7fd2ae1a7b821ef8615a4438bde9a17ef8057851
-            7df22431b51da07f941339cbb34fc4f36bc88a724fa86edf3eeea3138c940324
-            c9d1797ac73bc5a01bb9815b2f83811a75e481d8fb8c588e0f4991a5fa510596
-            886ab9b568bbb787f9c152ab788ca2adea25a0d181ddaac84aa564b4ee6739ac
-            128096ba16c11a5cca470cab52e5ca056681043995b8f0108a029756f70cacf3
-            41482ffc872e147bbc72ca8d5035b64446cfbb1d175b78f0a2672f8336d62970
-            36555d2170444a13d8c039b2d616001d60d9aa08a168290cd2863c4a3e54f590)
+sha256sums=('7cd5c5d432a25f45060868ce6a8578890e550158a2f779c4a20804b551e84c24'
+            'e3ef1e47479ec8dddc1b27261cce731a14218085785420d193bb4845e0c64706'
+            '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
+            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
+            '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
+            'c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c'
+            'ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66'
+            'd7a15909085630991499947120b0b1a6457bd7e450992dd5f10406af1b1fcca7'
+            'f4d9a0a1861d079d2f58538686fb425a43ab23e132dccd1a7f6ceb4fd7ec3e38'
+            '92297624436557fd1e12f50222aa296009dd59ab114abe55508f0927e831ce6c'
+            '85c0bed95d017d6cbec240f560ed189155dbc594cdf921a7f4a45c4e13326552'
+            '5cc20a27f0d7b1b55281d5d0a665fcfa8c4ebcb02a855fb5ccbade18912b37d7'
+            '71d398a592215e17fd0f67fe8e4e5cae424de63dae9dcedb8e0921a0d2c38b82'
+            'c547b3362c701d9bbce7179763c25a70453b6eb4d80f59b44a6057c6f6ed6719'
+            '21af48bffff108e44a20ed6141abdb13202f5c114946c9d55483a8e7e6839e66'
+            '0cf27a8e1132ccaf234eff150992610a58f8b0192a0f3fed660e18d565775527'
+            '6aa38c068c18a15b17f806aa398b0e3940af2f7b47827fd8484ed8d05e4cd516'
+            'c93a71977c568765bc551f313a87821a7a9ad1301862e581aea5126227c6172e'
+            '763224582f19b7cd04b24b403b68d3525c7b7823438aa530d3d4dfa1670442a1'
+            '910c9ceb91e7e1f01bcf9ba34c4c9130f50897e1d05dd694be84dbe2b0737624'
+            'e9758d04c00deb87d80a00292f158a69ef0f7f99cf2f090b26e6d2396c6f5912'
+            '99b912748e01ce84458708114571abcac73a5b7ec95bf0cfa92c7fa7a3990d7b'
+            'a364abb828cb3b066b97d5eed69f40a20871befd90e19a9463aa60fd87ba030c'
+            'd47e0e71f1cb964487ab92e6613ddfeeb53a23a5c2895ccb94799da6384e1299'
+            'a3a93a5aebc0cf8644a93d9c28a5f17567dda1125d6178f82d3d2a0b91a70539'
+            'ac72f5f425dc4efabd81fd5d6e828cbe5c0635b5c002f01f2fbc11370a4d0c11'
+            'c752c6a47aa031af6ce1b576344c5611ec9765bc956f08610c77fa0bb45d8dbe'
+            '1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d'
+            '50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4'
+            'd9495dc6f26114e973d8782088d25e69b299b20c31a60bfb439509ac456ed43a'
+            '5e4a07087ca9e04dfab70856c8c1c30923d39e209b97e3e50f4416cb973148ca'
+            '0e6453bf258c34349e5cc76811d804392aaa1ef9230c343719879682aaff7515'
+            '1ef1c44720798f5e7dcd57ec066e11cb0d4c4db673efcb74b2239534add9564c'
+            '395de0c24d57751a12d7f30c1247ed1f0edd9d203fdfde38ca058d5b2f14c7b4'
+            '8482af06b8bdde7718eda200493b9251eec3b12b8a4a9015602ae28d26f6eb16'
+            '7e7937c5e9b0ea77844e01bc2c7efb3e20723be56a2e50a53d835ff3b9b17a57'
+            'ef202cb1641e2c5efc7e7a45f94c746f72ff61abddd95ca019cfb91e85ae8c81'
+            'd3a17f447dcdaa645de85383ad50ccc6401dee43a4fc0364c13754a41c018d54'
+            '588fa2ab6f19796f4e6bfbc21b1b6d8f5d80e9e90c2598c69ec8f6847ef51242'
+            'd42e4d0683875860f2068f8fcedfff5b3176b1d19c95ef9d37e63ac2d414cdf5'
+            'fec01bafd0e2cf6d4dd710095ff1d9ee6031032c0a3077e0a58c0e2156bc5fe2'
+            '7b205662d0e93ede14d0c4a3c441d338dc67be20589e53aacff966361089e4a8'
+            'f33411b92a2d0b7c105c002c7fd2ae1a7b821ef8615a4438bde9a17ef8057851'
+            '7df22431b51da07f941339cbb34fc4f36bc88a724fa86edf3eeea3138c940324'
+            'c9d1797ac73bc5a01bb9815b2f83811a75e481d8fb8c588e0f4991a5fa510596'
+            '886ab9b568bbb787f9c152ab788ca2adea25a0d181ddaac84aa564b4ee6739ac'
+            '128096ba16c11a5cca470cab52e5ca056681043995b8f0108a029756f70cacf3'
+            '41482ffc872e147bbc72ca8d5035b64446cfbb1d175b78f0a2672f8336d62970'
+            '36555d2170444a13d8c039b2d616001d60d9aa08a168290cd2863c4a3e54f590')
