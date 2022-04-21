@@ -34,7 +34,7 @@ makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/40fe0de83122628b3f0a5bab3c4a3b346c10cd43/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/efa85f06d63f56f2ce03916bac6ef15d0b8345db
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/0cd77c4707f5054abcba4af4b3aaadffdab23c8d
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -59,7 +59,6 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost;  Will be submitted upstream by the author
         ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
         ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP;  From list: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20211019215843.42718-1-sigmaris@gmail.com/
-        ${manjarosource}/1015-media-rockchip-rga-do-proper-error-checking-in-probe.patch          # Rockchip RGA;  From list: https://patchwork.kernel.org/project/linux-rockchip/patch/20211120122321.20253-1-kmcopper@danwin1210.me/
         ${manjarosource}/1016-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming
         ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-2-christianshewitt@gmail.com/
         ${manjarosource}/1018-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-3-christianshewitt@gmail.com/
@@ -277,7 +276,6 @@ sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
             '763224582f19b7cd04b24b403b68d3525c7b7823438aa530d3d4dfa1670442a1'
             '910c9ceb91e7e1f01bcf9ba34c4c9130f50897e1d05dd694be84dbe2b0737624'
             'e9758d04c00deb87d80a00292f158a69ef0f7f99cf2f090b26e6d2396c6f5912'
-            '99b912748e01ce84458708114571abcac73a5b7ec95bf0cfa92c7fa7a3990d7b'
             'a364abb828cb3b066b97d5eed69f40a20871befd90e19a9463aa60fd87ba030c'
             'd47e0e71f1cb964487ab92e6613ddfeeb53a23a5c2895ccb94799da6384e1299'
             'a3a93a5aebc0cf8644a93d9c28a5f17567dda1125d6178f82d3d2a0b91a70539'
