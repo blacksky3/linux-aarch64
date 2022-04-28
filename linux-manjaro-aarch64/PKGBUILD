@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.17.4
+pkgver=5.17.5
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -32,7 +32,7 @@ makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/40fe0de83122628b3f0a5bab3c4a3b346c10cd43/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/0cd77c4707f5054abcba4af4b3aaadffdab23c8d
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/8f81b6f11a9a355210fb44d6d1d9a9797688f0ef
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -57,10 +57,10 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost;  Will be submitted upstream by the author
         ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
         ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP;  From list: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20211019215843.42718-1-sigmaris@gmail.com/
-        ${manjarosource}/1016-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming
-        ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-2-christianshewitt@gmail.com/
-        ${manjarosource}/1018-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-3-christianshewitt@gmail.com/
-        ${manjarosource}/1019-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
+        ${manjarosource}/1015-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming
+        ${manjarosource}/1016-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-G12B-boards.patch    # AMLogic [1/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-2-christianshewitt@gmail.com/
+        ${manjarosource}/1017-arm64-dts-meson-remove-CPU-opps-below-1GHz-for-SM1-boards.patch     # AMLogic [2/2];  From list: https://patchwork.kernel.org/project/linux-amlogic/patch/20220210100638.19130-3-christianshewitt@gmail.com/
+        ${manjarosource}/1018-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
         ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/
         ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/
         ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/
@@ -253,8 +253,8 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('6e3cd56ee83a9cb5ac3fde1442c40367ab67368946c4c93bbeb1c65664a0d3c5'
-            'e3ef1e47479ec8dddc1b27261cce731a14218085785420d193bb4845e0c64706'
+sha256sums=('9bbcd185b94436f9c8fe977fa0e862f60d34003562327fcebb27c9fa342fe987'
+            'e060ba243d482387ef2b590b4d52150adb490b43c7056680b3e37ee586c85567'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
