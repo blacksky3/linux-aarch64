@@ -5,9 +5,9 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
 
 # Version
 
-- linux-aarch64-edge : 5.17.5
+- linux-aarch64-edge : 5.17.6
 
-- linux-manjaro-aarch64 : 5.17.5
+- linux-manjaro-aarch64 : 5.17.6
 
 # Build on Archlinux x86_64 system
 
