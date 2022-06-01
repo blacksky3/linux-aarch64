@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.17.9
+pkgver=5.18.1
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -31,7 +31,7 @@ license=(GPL-2.0)
 makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc)
 options=(!strip)
 
-archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/40fe0de83122628b3f0a5bab3c4a3b346c10cd43/core/linux-aarch64
+archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/9c5b51b25ecc038cd505b26e15bb80464783a713/core/linux-aarch64
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${archlinuxarmsource}/0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
@@ -209,10 +209,10 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('172424bc41ef2df9b19457ceb022b56a51eb9497529b15ce7e9b8d6f90ad5978'
+sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
             'c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c'
             'ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66'
-            '81581f1890774a4add9b51cb5d92f2602424f254ea141c773d29f73574a76c04'
+            '46b08b30b6e125bd1f8f311eea0f877fd38037cf6c1212797112b392f4a4669f'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d')
