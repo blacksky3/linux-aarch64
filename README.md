@@ -11,7 +11,7 @@ Build for the latest linux kernel for Archlinux ARM system (aarch64)
 
 # Build on Archlinux x86_64 system
 
-    cd {linux-aarch64-edge-cross-build,linux-manjaro-aarch64-cross-build}
+    cd 5.18/{linux-aarch64-edge-cross-build,linux-manjaro-aarch64-cross-build}
     export CARCH="aarch64"
     makepkg -s
 
@@ -31,7 +31,7 @@ Copy linux-manjaro-aarch64-x.x.x-x-aarch64.pkg.tar.zst and linux-manjaro-aarch64
 
 # Build on Archlinux ARM aarch64 system
 
-    cd {linux-aarch64-edge,linux-manjaro-aarch64}
+    cd 5.18/{linux-aarch64-edge,linux-manjaro-aarch64}
     makepkg -s
     sudo pacman -U linux-aarch64-edge-x.x.x-x-aarch64.pkg.tar.zst  
     sudo pacman -U linux-aarch64-edge-headers-x.x.x-x-aarch64.pkg.tar.zst
