@@ -1,4 +1,3 @@
-
 # _     _            _        _          _____
 #| |__ | | __ _  ___| | _____| | ___   _|___ /
 #| '_ \| |/ _` |/ __| |/ / __| |/ / | | | |_ \
@@ -15,8 +14,12 @@ major=5.18
 
 echo "${source}"
 
-export CARCH="aarch64"
+# updpkgsums
 
-cd ${major}/linux-aarch64-edge-cross-build && makepkg -s && rm -rf pkg/ src/ && cd ${source}
+cd ${major}/linux-aarch64-edge && updpkgsums && cd ${source}
 
-cd ${major}/linux-manjaro-aarch64-cross-build && makepkg -s && rm -rf pkg/ src/ && cd ${source}
+cd ${major}/linux-aarch64-edge-cross-build && updpkgsums && cd ${source}
+
+cd ${major}/linux-manjaro-aarch64 && updpkgsums && cd ${source}
+
+cd ${major}/linux-manjaro-aarch64-cross-build && updpkgsums && cd ${source}
