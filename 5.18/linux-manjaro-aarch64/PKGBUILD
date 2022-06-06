@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.18.1
+pkgver=5.18.2
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -32,7 +32,7 @@ makedepends=(xmlto docbook-xsl kmod inetutils bc git uboot-tools vboot-utils dtc
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/9c5b51b25ecc038cd505b26e15bb80464783a713/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/014cf9c95527491e6394a347b47d523b733bceb8
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/1ad7b5da42ee87890031f5050d0658337dc22edb
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -62,7 +62,9 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/1017-ASOC-sun9i-hdmi-audio-Initial-implementation.patch                  # Allwinner H6 HDMI audio
         ${manjarosource}/1018-arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch                    # Allwinner H6 HDMI audio
         ${manjarosource}/1019-arm64-dts-allwinner-h6-Enable-hdmi-sound-card-on-boards.patch       # Allwinner H6 HDMI audio
-        ${manjarosource}/1020-arm64-dts-allwinner-add-OrangePi-3-LTS.patch                        # OrangePi 3 LTS
+        ${manjarosource}/1020-arm64-dts-allwinner-add-OrangePi-3-LTS.patch                        # Orange Pi 3 LTS
+        ${manjarosource}/1021-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch          # Radxa Zero
+        ${manjarosource}/1022-arm64-dts-rockchip-add-OrangePi-4-LTS.patch                         # Orange Pi 4 LTS
         ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/
         ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/
         ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/
@@ -241,8 +243,8 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
-            'b77283a9ddf330973cf908da956664001d7b8a55155349d8ebb38bec47837c35'
+sha256sums=('ef9ff2dfa5416a03e7e5fd9c308aaec385fe8ff9f4a62d957b167843849659a2'
+            'd6ec4aff09f67bfdd9d620c9a318bf0bf182f1a1f262688b994448628b36d13f'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
@@ -268,6 +270,8 @@ sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
             '8af91b38f8d46467d8f2819b8c82d80990a089ec0da1a40f5874ec0698b99220'
             '38e3a50c1de09e4574e9be0e2e796c334b6e7be85b928b61eac0f8e722134d82'
             '6c480cab15076f934d3989774cf5aee66253440777acfac492b6af242231a37f'
+            '5515cc6b38a89934a61c04410570b79193817f5151dbf2b4044e31f0b0b9dc3a'
+            '5b19ac61457afecb3ef092768477ef2912af9438fb0bb630ebb5b6e7dc4ab022'
             'c752c6a47aa031af6ce1b576344c5611ec9765bc956f08610c77fa0bb45d8dbe'
             '1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d'
             '50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4'

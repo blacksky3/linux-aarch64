@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.18.1
+pkgver=5.18.2
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -211,7 +211,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
+sha256sums=('ef9ff2dfa5416a03e7e5fd9c308aaec385fe8ff9f4a62d957b167843849659a2'
             'c850322ad82e53807c9d4844ee11e179bbdaa8082a952c998e13969aa12dd76c'
             'ddd6ccf14bfd117292828a50aab6d20fae161082b0094b4f12e2628649426b66'
             '46b08b30b6e125bd1f8f311eea0f877fd38037cf6c1212797112b392f4a4669f'
