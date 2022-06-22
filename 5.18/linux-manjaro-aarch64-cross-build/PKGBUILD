@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.18.5
+pkgver=5.18.6
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -34,7 +34,7 @@ makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/1082dd6dc0a9d3ef2b6f86844da85c834df22e08/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/0d0db6dba591a64d52c931da0add43ac74b41ff7
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/aff35eaa6361dfa5be74f83dfd738037ce42b828
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -46,36 +46,36 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${archlinuxarmsource}/0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
         # Manjaro patches
         ${manjarosource}/1001-arm64-dts-allwinner-add-hdmi-sound-to-pine-devices.patch            # A64-based devices
-        ${manjarosource}/1002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2
-        ${manjarosource}/1003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro;  From list: https://patchwork.kernel.org/project/dri-devel/patch/20200626033023.24214-2-shawn@anastas.io/
-        ${manjarosource}/1004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid
-        ${manjarosource}/1005-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch                 # Panfrost
-        ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firefly Station P1
-        ${manjarosource}/1007-drm-rockchip-add-support-for-modeline-32MHz-e.patch                 # DP Alt Mode
-        ${manjarosource}/1008-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64
-        ${manjarosource}/1009-drm-meson-encoder-add-YUV422-output-support.patch                   # Meson G12B
-        ${manjarosource}/1010-arm64-dts-amlogic-add-initial-Beelink-GT1-Ultimate-dev.patch        # Beelink GT1 Ultimate
-        ${manjarosource}/1011-arm64-dts-amlogic-add-meson-g12b-ugoos-am6-plus.patch               # Meson Ugoos
-        ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost;  Will be submitted upstream by the author
-        ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64
-        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP;  From list: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20211019215843.42718-1-sigmaris@gmail.com/
-        ${manjarosource}/1015-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming
-        ${manjarosource}/1016-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4
-        ${manjarosource}/1017-ASOC-sun9i-hdmi-audio-Initial-implementation.patch                  # Allwinner H6 HDMI audio
-        ${manjarosource}/1018-arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch                    # Allwinner H6 HDMI audio
-        ${manjarosource}/1019-arm64-dts-allwinner-h6-Enable-hdmi-sound-card-on-boards.patch       # Allwinner H6 HDMI audio
-        ${manjarosource}/1020-arm64-dts-allwinner-add-OrangePi-3-LTS.patch                        # Orange Pi 3 LTS
-        ${manjarosource}/1021-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch          # Radxa Zero
-        ${manjarosource}/1022-arm64-dts-rockchip-add-OrangePi-4-LTS.patch                         # Orange Pi 4 LTS
-        ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/
-        ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/
-        ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/
-        ${manjarosource}/2004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth;  The PinePhone part is in linux-next
+        ${manjarosource}/1002-arm64-dts-allwinner-add-ohci-ehci-to-h5-nanopi.patch                # Nanopi Neo Plus 2 (by Furkan?)
+        ${manjarosource}/1003-drm-bridge-analogix_dp-Add-enable_psr-param.patch                   # Pinebook Pro;  From list: https://patchwork.kernel.org/project/dri-devel/patch/20200626033023.24214-2-shawn@anastas.io/ (no updates since June 2020)
+        ${manjarosource}/1004-gpu-drm-add-new-display-resolution-2560x1440.patch                  # Odroid;  Not upstreamable
+        ${manjarosource}/1005-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch                 # Panfrost (preference patch, might not be upstreamable)
+        ${manjarosource}/1006-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch             # Firefly Station P1 (by Furkan)
+        ${manjarosource}/1007-drm-rockchip-add-support-for-modeline-32MHz-e.patch                 # DP Alt Mode;  Scheduled for deletion (not needed)
+        ${manjarosource}/1008-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch     # RockPro64 (by @nuumio, perhaps upstreamable?)
+        ${manjarosource}/1009-drm-meson-encoder-add-YUV422-output-support.patch                   # Meson G12B (applied in linux-next)
+        ${manjarosource}/1010-arm64-dts-amlogic-add-initial-Beelink-GT1-Ultimate-dev.patch        # Beelink GT1 Ultimate (by Furkan)
+        ${manjarosource}/1011-arm64-dts-amlogic-add-meson-g12b-ugoos-am6-plus.patch               # Meson Ugoos (by Furkan)
+        ${manjarosource}/1012-drm-panfrost-scheduler-improvements.patch                           # Panfrost;  Will be submitted upstream by Dragan
+        ${manjarosource}/1013-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch          # RockPro64 (relies on patch 1008)
+        ${manjarosource}/1014-drm-rockchip-support-gamma-control-on-RK3399.patch                  # RK3399 VOP;  From list: https://patchwork.kernel.org/project/linux-arm-kernel/cover/20211019215843.42718-1-sigmaris@gmail.com/ (no updates since October 2020)
+        ${manjarosource}/1015-arm64-dts-rockchip-switch-to-hs200-on-rockpi4.patch                 # Radxa Rock Pi 4;  Temporary hotfix, not for upstreaming (by Dragan)
+        ${manjarosource}/1016-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch          # Radxa Rock Pi 4 (relies on patch 1008)
+        ${manjarosource}/1017-ASOC-sun9i-hdmi-audio-Initial-implementation.patch                  # Allwinner H6 HDMI audio (by Furkan)
+        ${manjarosource}/1018-arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch                    # Allwinner H6 HDMI audio (by Furkan)
+        ${manjarosource}/1019-arm64-dts-allwinner-h6-Enable-hdmi-sound-card-on-boards.patch       # Allwinner H6 HDMI audio (by Furkan)
+        ${manjarosource}/1020-arm64-dts-allwinner-add-OrangePi-3-LTS.patch                        # Orange Pi 3 LTS (by Furkan)
+        ${manjarosource}/1021-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch          # Radxa Zero (by Furkan)
+        ${manjarosource}/1022-arm64-dts-rockchip-add-OrangePi-4-LTS.patch                         # Orange Pi 4 LTS (by Furkan)
+        ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/ (no updates since July 2020)
+        ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/ (no updates since July 2020)
+        ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/ (no updates since July 2020)
+        ${manjarosource}/2004-arm64-dts-allwinner-enable-bluetooth-pinetab-pinepho.patch          # Bluetooth;  The PinePhone part is in linux-next (not needed)
         ${manjarosource}/2005-staging-add-rtl8723cs-driver.patch                                  # Realtek WiFi;  Not upstreamable
-        ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # PineTab Accelerometer
-        ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # PineTab Audio
-        ${manjarosource}/2008-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth;  Will be submitted upstream by the author
-        ${manjarosource}/2009-arm64-dts-rockchip-Work-around-daughterboard-issues.patch)          # Pinebook Pro microSD;  Will be submitted upstream by the author
+        ${manjarosource}/2006-arm64-dts-allwinner-pinetab-add-accelerometer.patch                 # PineTab Accelerometer (not needed)
+        ${manjarosource}/2007-arm64-dts-allwinner-pinetab-enable-jack-detection.patch             # PineTab Audio (not needed)
+        ${manjarosource}/2008-brcmfmac-USB-probing-provides-no-board-type.patch                   # Bluetooth;  Will be submitted upstream by Dragan
+        ${manjarosource}/2009-arm64-dts-rockchip-Work-around-daughterboard-issues.patch)          # Pinebook Pro microSD;  Will be submitted upstream by Dragan
 
 prepare(){
 
@@ -245,8 +245,8 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('9c3731d405994f9cd3a1bb72e83140735831b19c7cec18e0d7a8f3046fa034e7'
-            '2cdae959bc0822966f66caf9bb34ee263d8509a6d20f7a832b70b6b2a508c3a0'
+sha256sums=('4e1c2a9e79847850029571a1dd04761e5f657b52c558070a085365641f133478'
+            'a91c6d6c5e773c9f12ab853bdfa9c470dffe13e1fab9a2f89d22413ce22ba368'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
