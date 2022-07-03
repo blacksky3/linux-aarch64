@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.18.8
+pkgver=5.18.9
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -34,7 +34,7 @@ makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/1082dd6dc0a9d3ef2b6f86844da85c834df22e08/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/554d89ef908a95f6831373cd4abdf60f0aabafd6
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/bc34e144b2d3d9700f97e0481e2ab4937d6239f7
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -67,6 +67,7 @@ source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.
         ${manjarosource}/1020-arm64-dts-allwinner-add-OrangePi-3-LTS.patch                        # Orange Pi 3 LTS (by Furkan)
         ${manjarosource}/1021-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch          # Radxa Zero (by Furkan)
         ${manjarosource}/1022-arm64-dts-rockchip-add-OrangePi-4-LTS.patch                         # Orange Pi 4 LTS (by Furkan)
+	      ${manjarosource}/1023-Add-YT8531C-phy-support.patch					                              # Ethernet: Motorcomm YT8531C (by Furkan) - Will be upstreamed soon.
         ${manjarosource}/2001-Bluetooth-Add-new-quirk-for-broken-local-ext-features.patch         # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-2-anarsoul@gmail.com/ (no updates since July 2020)
         ${manjarosource}/2002-Bluetooth-btrtl-add-support-for-the-RTL8723CS.patch                 # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-3-anarsoul@gmail.com/ (no updates since July 2020)
         ${manjarosource}/2003-arm64-allwinner-a64-enable-Bluetooth-On-Pinebook.patch              # Bluetooth;  From list: https://patchwork.kernel.org/project/bluetooth/patch/20200705195110.405139-4-anarsoul@gmail.com/ (no updates since July 2020)
@@ -245,8 +246,8 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('0823eb05dba001cf9e2560a76dfa4d81c854e1dcfbfb25cc73ba64cd7e900a36'
-            'a91c6d6c5e773c9f12ab853bdfa9c470dffe13e1fab9a2f89d22413ce22ba368'
+sha256sums=('3882e26fcedcfe3ccfc158b9be2d95df25f26c3795ecf1ad95708ed532f5c93c'
+            '0fdab6ccba5b9683d709fbf72dd3b1833280f13694262060a87fb65754fb4ebc'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
@@ -273,7 +274,8 @@ sha256sums=('0823eb05dba001cf9e2560a76dfa4d81c854e1dcfbfb25cc73ba64cd7e900a36'
             '38e3a50c1de09e4574e9be0e2e796c334b6e7be85b928b61eac0f8e722134d82'
             '6c480cab15076f934d3989774cf5aee66253440777acfac492b6af242231a37f'
             '5515cc6b38a89934a61c04410570b79193817f5151dbf2b4044e31f0b0b9dc3a'
-            '5b19ac61457afecb3ef092768477ef2912af9438fb0bb630ebb5b6e7dc4ab022'
+            '83de7f27d7362b99099ba00879ecc293bc3729d7f69db4dee997dbaf8b2739e8'
+            '96e99cc065c6c2f9cc34093c0f1c673feb4526d143b85b689511969d67a0df52'
             'c752c6a47aa031af6ce1b576344c5611ec9765bc956f08610c77fa0bb45d8dbe'
             '1d64436b14f0c29138abc881576b611e240085c00d924a3eb865734c8ce4c41d'
             '50f677d4dca75d782577eed7b7756759f469a1e8dcaea91bc465bdc90dd466d4'
