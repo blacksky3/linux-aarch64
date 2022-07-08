@@ -23,7 +23,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.18.9
+pkgver=5.18.10
 pkgrel=1
 arch=(aarch64)
 url='https://www.kernel.org/'
@@ -34,7 +34,7 @@ makedepends=(bison flex make xmlto docbook-xsl kmod inetutils bc git uboot-tools
 options=(!strip)
 
 archlinuxarmsource=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/1082dd6dc0a9d3ef2b6f86844da85c834df22e08/core/linux-aarch64
-manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/bc34e144b2d3d9700f97e0481e2ab4937d6239f7
+manjarosource=https://gitlab.manjaro.org/manjaro-arm/packages/core/linux/-/raw/912d8875952bef51331dfb796091168ad9ebc0ed
 
 source=(https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz
         ${manjarosource}/config
@@ -246,7 +246,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('3882e26fcedcfe3ccfc158b9be2d95df25f26c3795ecf1ad95708ed532f5c93c'
+sha256sums=('f99e3d01dbb8ee6fe765d9cb2b2e073afd2dc581c0d3979751c862745d73dee3'
             '0fdab6ccba5b9683d709fbf72dd3b1833280f13694262060a87fb65754fb4ebc'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
